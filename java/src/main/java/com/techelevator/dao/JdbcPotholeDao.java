@@ -4,6 +4,7 @@ import com.techelevator.model.PotholeDto;
 import org.springframework.data.relational.core.sql.In;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.core.parameters.P;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -27,14 +28,21 @@ public class JdbcPotholeDao implements PotholeDao{
 
     @Override
     public PotholeDto findPothole(int id) {
+        PotholeDto potholeDto = new PotholeDto();
         String sql = "SELECT p.pothole_id, l.location_id, sev.severity, stat.status, log.date_modified, log.modified_by, l.street_address, l.lat_long " +
                 "FROM pothole p " +
                 "JOIN location l ON p.location_id = l.location_id " +
                 "JOIN severity sev ON p.severity_id = sev.severity_id " +
                 "JOIN status stat ON p.status_id = stat.status_id " +
-                "JOIN log on p.pothole_id = log.pothole_id;";
+                "JOIN log on p.pothole_id = log.pothole_id " +
+                "WHERE p.pothole_id = ?;";
 
-        return null;
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
+        if (result.next()){
+            potholeDto = mapRowToPotholeDto(result);
+        }
+
+        return potholeDto;
     }
 
     @Override
@@ -52,9 +60,9 @@ public class JdbcPotholeDao implements PotholeDao{
     // Returned pothole id will be used to insert to log table.
         sql = "INSERT INTO log (pothole_id, modified_by, date_modified, status_after_mod) " +
             "VALUES (?, ?, ?, ?);";
-        id = jdbcTemplate.queryForObject(sql, Integer.class, id, LocalDate.now(), 1);
-    //TODO:
-    return null;
+         jdbcTemplate.queryForObject(sql, Integer.class, id, LocalDate.now(), 1);
+
+    return findPothole(id);
     }
 
     @Override
