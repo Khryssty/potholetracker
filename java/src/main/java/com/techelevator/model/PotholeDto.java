@@ -13,7 +13,24 @@ public class PotholeDto {
     private Date statusDate;
     private String assignedTo;
     private String address;
-    private Point coordinates;
+    private double lat;
+    private double lng;
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
 
     public int getPotholeId() {
         return potholeId;
@@ -77,14 +94,6 @@ public class PotholeDto {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Point getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(Point coordinates) {
-        this.coordinates = coordinates;
     }
 
     @Override
