@@ -19,11 +19,19 @@ public class JdbcPotholeDao implements PotholeDao{
 
     @Override
     public List<PotholeDto> findAll() {
-        List<PotholeDao> potholes = new ArrayList<>();
+        List<PotholeDto> potholes = new ArrayList<>();
+        String sql = "SELECT p.pothole_id, l.location_id, sev.severity, stat.status, log.date_modified, log.modified_by, l.street_address, l.lat_long " +
+                "FROM pothole p " +
+                "JOIN location l ON p.location_id = l.location_id " +
+                "JOIN severity sev ON p.severity_id = sev.severity_id " +
+                "JOIN status stat ON p.status_id = stat.status_id " +
+                "JOIN log on p.pothole_id = log.pothole_id;";
 
-
-
-        return null;
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while(results.next()){
+            potholes.add(mapRowToPotholeDto(results));
+        }
+        return potholes;
     }
 
     @Override
