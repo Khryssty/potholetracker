@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.PotholeDto;
+import com.techelevator.service.PotholeService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,21 +17,21 @@ import java.util.List;
 @RequestMapping(path="/potholes")
 public class PotholeController {
 
-    //TODO:uncomment this once service is in place
-//   private PotholeService service;
+
+    private PotholeService service;
     private UserDao userDao;
 
-    public PotholeController(UserDao userDao) {
-        //TODO:uncomment this once service is in place. Add service in line
-//        this.service = service;
+    public PotholeController(UserDao userDao, PotholeService service) {
+        this.service = service;
         this.userDao = userDao;
     }
 
-//    @PreAuthorize("permitAll")
-//    @RequestMapping(method = RequestMethod.GET){
-//    public List<PotholeDto> findAll(){
-//
-//        }
-//
-//    }
-}
+    @PreAuthorize("permitAll")
+    @RequestMapping(method = RequestMethod.GET)
+    public List<PotholeDto> findAll(){
+        return service.getAllPotholes();
+        }
+
+
+    }
+

@@ -2,6 +2,7 @@ package com.techelevator.model;
 
 import java.awt.*;
 import java.util.Date;
+import java.util.Objects;
 
 public class PotholeDto {
 
@@ -13,7 +14,8 @@ public class PotholeDto {
     private Date statusDate;
     private String assignedTo;
     private String address;
-    private Point coordinates;
+    private double latitude;
+    private double longitude;
 
     public int getPotholeId() {
         return potholeId;
@@ -79,26 +81,48 @@ public class PotholeDto {
         this.address = address;
     }
 
-    public Point getCoordinates() {
-        return coordinates;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setCoordinates(Point coordinates) {
-        this.coordinates = coordinates;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "PotholeDto{" +
+                "potholeId=" + potholeId +
+                ", locationId=" + locationId +
+                ", photo='" + photo + '\'' +
+                ", severity='" + severity + '\'' +
+                ", status='" + status + '\'' +
+                ", statusDate=" + statusDate +
+                ", assignedTo='" + assignedTo + '\'' +
+                ", address='" + address + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PotholeDto)) return false;
+        PotholeDto that = (PotholeDto) o;
+        return potholeId == that.potholeId && locationId == that.locationId && Double.compare(that.latitude, latitude) == 0 && Double.compare(that.longitude, longitude) == 0 && Objects.equals(photo, that.photo) && Objects.equals(severity, that.severity) && Objects.equals(status, that.status) && Objects.equals(statusDate, that.statusDate) && Objects.equals(assignedTo, that.assignedTo) && Objects.equals(address, that.address);
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(potholeId, locationId, photo, severity, status, statusDate, assignedTo, address, latitude, longitude);
     }
 }

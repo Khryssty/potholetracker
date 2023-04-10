@@ -78,6 +78,7 @@ public class JdbcPotholeDao implements PotholeDao{
 
     @Override
     public PotholeDto updatePothole(PotholeDto potholeDto) {
+//TODO: Update pothole
 //        if (potholeDto.)
 //
 //        String sql = "UPDATE pothole " +
@@ -97,7 +98,7 @@ public class JdbcPotholeDao implements PotholeDao{
         String sql = "UPDATE pothole SET status_id = 5 WHERE pothole_id = ?;";
         jdbcTemplate.update(sql, id);
 
-// Insert a record in log table for deleted status.
+// TODO: Insert a record in log table for deleted status.
 
         sql = "INSERT INTO log (pothole_id, modified_by, date_modified, status_before_mod, status_after_mod) " +
                 "VALUES ( ?, ?, ?, ?, ?);";
@@ -121,6 +122,8 @@ private PotholeDto mapRowToPotholeDto(SqlRowSet rowSet){
    potholeDto.setStatusDate(rowSet.getDate("date_modified"));
    potholeDto.setAssignedTo(rowSet.getString("username"));
    potholeDto.setAddress(rowSet.getString("street_addres"));
+
+//TODO: Find a solution to handle point data type
    //potholeDto.setCoordinates(rowset.getPoint("lat_lang"));
    return potholeDto;
 }
