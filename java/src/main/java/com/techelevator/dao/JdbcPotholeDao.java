@@ -20,12 +20,13 @@ public class JdbcPotholeDao implements PotholeDao{
     @Override
     public List<PotholeDto> findAll() {
         List<PotholeDto> potholes = new ArrayList<>();
-        String sql = "SELECT p.pothole_id, l.location_id, sev.severity, stat.status, log.date_modified, log.modified_by, l.street_address, l.lat_long " +
+        String sql = "SELECT p.pothole_id, l.location_id, sev.severity, stat.status, log.date_modified, log.modified_by, l.street_address, l.lat_long, users.username " +
                 "FROM pothole p " +
                 "JOIN location l ON p.location_id = l.location_id " +
                 "JOIN severity sev ON p.severity_id = sev.severity_id " +
                 "JOIN status stat ON p.status_id = stat.status_id " +
-                "JOIN log on p.pothole_id = log.pothole_id;";
+                "JOIN log on p.pothole_id = log.pothole_id " +
+                "JOIN users on log.modified_by = users.user_id;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()){
@@ -37,12 +38,13 @@ public class JdbcPotholeDao implements PotholeDao{
     @Override
     public PotholeDto findPothole(int id) {
         PotholeDto potholeDto = new PotholeDto();
-        String sql = "SELECT p.pothole_id, l.location_id, sev.severity, stat.status, log.date_modified, log.modified_by, l.street_address, l.lat_long " +
+        String sql = "SELECT p.pothole_id, l.location_id, sev.severity, stat.status, log.date_modified, log.modified_by, l.street_address, l.lat_long, users.username " +
                 "FROM pothole p " +
                 "JOIN location l ON p.location_id = l.location_id " +
                 "JOIN severity sev ON p.severity_id = sev.severity_id " +
                 "JOIN status stat ON p.status_id = stat.status_id " +
                 "JOIN log on p.pothole_id = log.pothole_id " +
+                "JOIN users on log.modified_by = users.user_id " +
                 "WHERE p.pothole_id = ?;";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
@@ -75,11 +77,17 @@ public class JdbcPotholeDao implements PotholeDao{
 
     @Override
     public PotholeDto updatePothole(PotholeDto potholeDto) {
+//        if (potholeDto.)
+//
+//        String sql = "UPDATE pothole " +
+//                    "SET "
+
         return null;
     }
 
     @Override
     public PotholeDto deletePothole(int id) {
+        
         return null;
     }
 
@@ -91,7 +99,7 @@ private PotholeDto mapRowToPotholeDto(SqlRowSet rowSet){
    potholeDto.setSeverity(rowSet.getString("severity"));
    potholeDto.setStatus(rowSet.getString("status"));
    potholeDto.setStatusDate(rowSet.getDate("date_modified"));
-   potholeDto.setAssignedTo(rowSet.getString("user"));
+   potholeDto.setAssignedTo(rowSet.getString("username"));
    potholeDto.setAddress(rowSet.getString("street_addres"));
    //potholeDto.setCoordinates(rowset.getPoint("lat_lang"));
    return potholeDto;
