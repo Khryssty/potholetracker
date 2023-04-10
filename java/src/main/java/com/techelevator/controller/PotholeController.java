@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -28,8 +29,8 @@ public class PotholeController {
 
     @PreAuthorize("permitAll")
     @RequestMapping(method = RequestMethod.GET)
-    public List<PotholeDto> findAll(){
-        return service.getAllPotholes();
+    public List<PotholeDto> findAll(Principal principal){
+        return service.getAllPotholes(principal);
         }
 
 
