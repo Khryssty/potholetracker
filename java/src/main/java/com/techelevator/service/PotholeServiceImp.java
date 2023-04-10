@@ -4,6 +4,7 @@ import com.techelevator.dao.PotholeDao;
 import com.techelevator.model.PotholeDto;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class PotholeServiceImp implements PotholeService{
       this.dao = potholeDao;
    }
    @Override
-   public List<PotholeDto> getAllPotholes() {
+   public List<PotholeDto> getAllPotholes(Principal principal) {
       return dao.findAll();
    }
 

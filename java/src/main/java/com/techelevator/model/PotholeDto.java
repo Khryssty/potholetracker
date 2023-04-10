@@ -14,8 +14,29 @@ public class PotholeDto {
     private Date statusDate;
     private String assignedTo;
     private String address;
+<<<<<<< HEAD
     private double latitude;
     private double longitude;
+=======
+    private double lat;
+    private double lng;
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
+>>>>>>> 7a8ef4a60830585ae2b2423b4f61c1ed269670b4
 
     public int getPotholeId() {
         return potholeId;
@@ -81,6 +102,7 @@ public class PotholeDto {
         this.address = address;
     }
 
+<<<<<<< HEAD
     public double getLatitude() {
         return latitude;
     }
@@ -95,6 +117,11 @@ public class PotholeDto {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+=======
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+>>>>>>> 7a8ef4a60830585ae2b2423b4f61c1ed269670b4
     }
 
     @Override
