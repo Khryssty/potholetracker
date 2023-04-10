@@ -51,13 +51,13 @@ public class PotholeServiceImp implements PotholeService{
 
    /**
     * Delete the given pothole
-    * @param pothole pothole to be deleted
+    * @param int id to be deleted
     */
    @Override
-   public void deletePothole(PotholeDto pothole) {
-      if(potholeExists(pothole)) {
-         dao.deletePothole(pothole.getPotholeId());
-      }
+   public void deletePothole(int id) {
+//      if(potholeExists(pothole)) {
+         dao.deletePothole(id);
+//      }
    }
 
    private boolean locationIsValid(PotholeDto pothole) {
