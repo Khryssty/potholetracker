@@ -21,7 +21,7 @@ public class JdbcPotholeDao implements PotholeDao{
     @Override
     public List<PotholeDto> findAll() {
         List<PotholeDto> potholes = new ArrayList<>();
-        String sql = "SELECT p.pothole_id, l.location_id, sev.severity, stat.status, log.date_modified, log.modified_by, l.street_address, l.lat_long, users.username " +
+        String sql = "SELECT p.pothole_id, l.location_id, sev.severity, stat.status, log.date_modified, log.modified_by, l.street_address, l.lat, l.long, users.username " +
                 "FROM pothole p " +
                 "JOIN location l ON p.location_id = l.location_id " +
                 "JOIN severity sev ON p.severity_id = sev.severity_id " +
@@ -39,7 +39,7 @@ public class JdbcPotholeDao implements PotholeDao{
     @Override
     public PotholeDto findPothole(int id) {
         PotholeDto potholeDto = new PotholeDto();
-        String sql = "SELECT p.pothole_id, l.location_id, sev.severity, stat.status, log.date_modified, log.modified_by, l.street_address, l.lat_long, users.username " +
+        String sql = "SELECT p.pothole_id, l.location_id, sev.severity, stat.status, log.date_modified, log.modified_by, l.street_address, l.lat, l.long, users.username " +
                 "FROM pothole p " +
                 "JOIN location l ON p.location_id = l.location_id " +
                 "JOIN severity sev ON p.severity_id = sev.severity_id " +
@@ -59,9 +59,9 @@ public class JdbcPotholeDao implements PotholeDao{
     @Override
     public PotholeDto createPothole(PotholeDto potholeDto) {
         // Insert to location table first to retrieve a location id.
-    String sql = "INSERT INTO location (street_address, lat_long) " +
+    String sql = "INSERT INTO location (street_address, lat, long) " +
                  "VALUES (?, ?) RETURNING location_id;";
-    Integer id =  jdbcTemplate.queryForObject(sql, Integer.class, potholeDto.getAddress(), potholeDto.getCoordinates());
+    Integer id =  jdbcTemplate.queryForObject(sql, Integer.class, potholeDto.getAddress(), potholeDto.getLat(), potholeDto.getLng());
 
     //Use the location id that was returned to insert into pothole table.
         sql = "INSERT INTO pothole(location_id, severity_id, status_id) " +
@@ -105,11 +105,6 @@ public class JdbcPotholeDao implements PotholeDao{
 //        jdbcTemplate.update(sql, )
     }
 
-
-
-
-
-
     }
 
 private PotholeDto mapRowToPotholeDto(SqlRowSet rowSet){
@@ -122,9 +117,8 @@ private PotholeDto mapRowToPotholeDto(SqlRowSet rowSet){
    potholeDto.setStatusDate(rowSet.getDate("date_modified"));
    potholeDto.setAssignedTo(rowSet.getString("username"));
    potholeDto.setAddress(rowSet.getString("street_addres"));
-
-//TODO: Find a solution to handle point data type
-   //potholeDto.setCoordinates(rowset.getPoint("lat_lang"));
+   potholeDto.setLat(rowSet.getDouble("lat"));
+   potholeDto.setLng(rowSet.getDouble("lng"));
    return potholeDto;
 }
 }

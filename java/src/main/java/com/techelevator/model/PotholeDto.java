@@ -14,10 +14,6 @@ public class PotholeDto {
     private Date statusDate;
     private String assignedTo;
     private String address;
-<<<<<<< HEAD
-    private double latitude;
-    private double longitude;
-=======
     private double lat;
     private double lng;
 
@@ -36,7 +32,6 @@ public class PotholeDto {
     public void setLng(double lng) {
         this.lng = lng;
     }
->>>>>>> 7a8ef4a60830585ae2b2423b4f61c1ed269670b4
 
     public int getPotholeId() {
         return potholeId;
@@ -102,26 +97,17 @@ public class PotholeDto {
         this.address = address;
     }
 
-<<<<<<< HEAD
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-=======
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
->>>>>>> 7a8ef4a60830585ae2b2423b4f61c1ed269670b4
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PotholeDto)) return false;
+        PotholeDto that = (PotholeDto) o;
+        return potholeId == that.potholeId && locationId == that.locationId && Double.compare(that.lat, lat) == 0 && Double.compare(that.lng, lng) == 0 && Objects.equals(photo, that.photo) && Objects.equals(severity, that.severity) && Objects.equals(status, that.status) && Objects.equals(statusDate, that.statusDate) && Objects.equals(assignedTo, that.assignedTo) && Objects.equals(address, that.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(potholeId, locationId, photo, severity, status, statusDate, assignedTo, address, lat, lng);
     }
 
     @Override
@@ -135,21 +121,8 @@ public class PotholeDto {
                 ", statusDate=" + statusDate +
                 ", assignedTo='" + assignedTo + '\'' +
                 ", address='" + address + '\'' +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
+                ", lat=" + lat +
+                ", lng=" + lng +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PotholeDto)) return false;
-        PotholeDto that = (PotholeDto) o;
-        return potholeId == that.potholeId && locationId == that.locationId && Double.compare(that.latitude, latitude) == 0 && Double.compare(that.longitude, longitude) == 0 && Objects.equals(photo, that.photo) && Objects.equals(severity, that.severity) && Objects.equals(status, that.status) && Objects.equals(statusDate, that.statusDate) && Objects.equals(assignedTo, that.assignedTo) && Objects.equals(address, that.address);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(potholeId, locationId, photo, severity, status, statusDate, assignedTo, address, latitude, longitude);
     }
 }
