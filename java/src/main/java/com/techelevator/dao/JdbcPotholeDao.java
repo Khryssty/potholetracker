@@ -9,6 +9,7 @@ import org.springframework.security.core.parameters.P;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class JdbcPotholeDao implements PotholeDao{
     private JdbcTemplate jdbcTemplate;
@@ -70,7 +71,7 @@ public class JdbcPotholeDao implements PotholeDao{
     // Returned pothole id will be used to insert to log table.
         sql = "INSERT INTO log (pothole_id, modified_by, date_modified, status_after_mod) " +
             "VALUES (?, ?, ?, ?);";
-         jdbcTemplate.queryForObject(sql, Integer.class, id, LocalDate.now(), 1);
+         jdbcTemplate.update(sql, Integer.class, id, LocalDate.now(), 1);
 
     return findPothole(id);
     }
@@ -86,9 +87,28 @@ public class JdbcPotholeDao implements PotholeDao{
     }
 
     @Override
-    public PotholeDto deletePothole(int id) {
-        
-        return null;
+    public void deletePothole(int id) {
+// Query the pothole
+    PotholeDto potholeDto = findPothole(id);
+
+    if (!potholeDto.getStatus().equalsIgnoreCase("deleted")) {
+
+// The pothole record is not deleted from the database but tagged as DELETED status for audit trail purposes.
+        String sql = "UPDATE pothole SET status_id = 5 WHERE pothole_id = ?;";
+        jdbcTemplate.update(sql, id);
+
+// Insert a record in log table for deleted status.
+
+        sql = "INSERT INTO log (pothole_id, modified_by, date_modified, status_before_mod, status_after_mod) " +
+                "VALUES ( ?, ?, ?, ?, ?);";
+//        jdbcTemplate.update(sql, )
+    }
+
+
+
+
+
+
     }
 
 private PotholeDto mapRowToPotholeDto(SqlRowSet rowSet){
