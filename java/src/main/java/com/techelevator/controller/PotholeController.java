@@ -53,7 +53,7 @@ public class PotholeController {
        if(createdPothole == null) {
            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Location invalid");
        }
-      return service.createPothole(potholeDto, principal);
+      return createdPothole;
    }
 
    @PutMapping
