@@ -5,11 +5,12 @@ import org.springframework.data.relational.core.sql.In;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.parameters.P;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class JdbcPotholeDao implements PotholeDao{
     private JdbcTemplate jdbcTemplate;
 
@@ -60,7 +61,7 @@ public class JdbcPotholeDao implements PotholeDao{
         // Insert to location table first to retrieve a location id.
     String sql = "INSERT INTO location (street_address, lat_long) " +
                  "VALUES (?, ?) RETURNING location_id;";
-    Integer id =  jdbcTemplate.queryForObject(sql, Integer.class, potholeDto.getAddress(), potholeDto.getCoordinates());
+    Integer id =  jdbcTemplate.queryForObject(sql, Integer.class, potholeDto.getAddress());
 
     //Use the location id that was returned to insert into pothole table.
         sql = "INSERT INTO pothole(location_id, severity_id, status_id) " +

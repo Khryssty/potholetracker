@@ -1,13 +1,24 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, status, severity, location, pothole;
+DROP TABLE IF EXISTS role, users, status, severity, location, pothole;
+
+CREATE TABLE role (
+    role_id SERIAL,
+    role varchar(16) NOT NULL,
+
+    CONSTRAINT PK_role_id PRIMARY KEY (role_id)
+);
+
+INSERT INTO role (role) VALUES ('ROLE_USER');
+INSERT INTO role (role) VALUES ('ROLE_ADMIN');
 
 CREATE TABLE users (
 	user_id SERIAL,
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
-	role varchar(50) NOT NULL,
+	role varchar(16) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
+--	CONSTRAINT fk_role_id FOREIGN KEY (role_id) REFERENCES role(role_id)
 );
 
 CREATE TABLE location
