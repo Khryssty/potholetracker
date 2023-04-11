@@ -1,35 +1,25 @@
 package com.techelevator.model;
 
-import java.awt.*;
 import java.util.Date;
+import java.util.Objects;
 
 public class PotholeDto {
 
     private int potholeId;
-    private int locationId;
+    private Location location;
     private String photo;
     private String severity;
     private String status;
     private Date statusDate;
     private String assignedTo;
-    private String address;
-    private double lat;
-    private double lng;
+    private String username;
 
-    public double getLat() {
-        return lat;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setLat(double lat) {
-        this.lat = lat;
-    }
-
-    public double getLng() {
-        return lng;
-    }
-
-    public void setLng(double lng) {
-        this.lng = lng;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public int getPotholeId() {
@@ -38,14 +28,6 @@ public class PotholeDto {
 
     public void setPotholeId(int potholeId) {
         this.potholeId = potholeId;
-    }
-
-    public int getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(int locationId) {
-        this.locationId = locationId;
     }
 
     public String getPhoto() {
@@ -88,26 +70,38 @@ public class PotholeDto {
         this.assignedTo = assignedTo;
     }
 
-    public String getAddress() {
-        return address;
+    public String getUsername() {
+        return username;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "PotholeDto{" +
+                "potholeId=" + potholeId +
+                ", location=" + location +
+                ", photo='" + photo + '\'' +
+                ", severity='" + severity + '\'' +
+                ", status='" + status + '\'' +
+                ", statusDate=" + statusDate +
+                ", assignedTo='" + assignedTo + '\'' +
+                ", username='" + username + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PotholeDto that = (PotholeDto) o;
+        return potholeId == that.potholeId && Objects.equals(location, that.location) && Objects.equals(photo, that.photo) && Objects.equals(severity, that.severity) && Objects.equals(status, that.status) && Objects.equals(statusDate, that.statusDate) && Objects.equals(assignedTo, that.assignedTo) && Objects.equals(username, that.username);
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(potholeId, location, photo, severity, status, statusDate, assignedTo, username);
     }
 }

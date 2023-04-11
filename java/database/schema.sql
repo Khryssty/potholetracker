@@ -2,29 +2,23 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS role, users, status, severity, location, pothole;
 
-CREATE TABLE role (
-    role_id SERIAL,
-    role varchar(16) NOT NULL,
-
-    CONSTRAINT PK_role_id PRIMARY KEY (role_id)
-);
-
-INSERT INTO role (role) VALUES ('ROLE_USER');
-INSERT INTO role (role) VALUES ('ROLE_ADMIN');
-
 CREATE TABLE users (
 	user_id SERIAL,
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
-	role varchar(16) NOT NULL,
+	role varChar(16) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
---	CONSTRAINT fk_role_id FOREIGN KEY (role_id) REFERENCES role(role_id)
+-- 	CONSTRAINT fk_role_id FOREIGN KEY (role_id) REFERENCES role(role_id)
 );
 
 CREATE TABLE location
 (
 	location_id SERIAL,
-	street_address VARCHAR(128) NOT NULL,
+	street_address VARCHAR(128),
+	street VARCHAR(64),
+	city VARCHAR(32),
+	state VARCHAR(32),
+	postalCode VARCHAR(32),
 	lat DECIMAL NOT NULL,
 	long DECIMAL NOT NULL,
 
@@ -60,7 +54,7 @@ CREATE TABLE pothole
 (
 	pothole_id SERIAL,
 	location_id INT NOT NULL,
-	photo VARCHAR(128) NOT NULL, --Maybe default to a stock photo
+	photo VARCHAR(128) NULL, --Maybe default to a stock photo
 	severity_id INT DEFAULT 1, -- id of 1 = 'none'
 	status_id INT DEFAULT 1, -- id of 1 = 'reported'
 

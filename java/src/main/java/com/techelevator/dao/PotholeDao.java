@@ -1,14 +1,17 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.PotholeDto;
+import org.springframework.stereotype.Repository;
 
+import java.security.Principal;
 import java.util.List;
 
+@Repository
 public interface PotholeDao {
 
     List<PotholeDto> findAll();
     PotholeDto findPothole(int id);
-    PotholeDto createPothole(PotholeDto potholeDto);
+    PotholeDto createPothole(PotholeDto potholeDto, int createdByUserId);
     PotholeDto updatePothole(PotholeDto potholeDto);
-    PotholeDto deletePothole(int id);
+    void deletePothole(int id);
 }

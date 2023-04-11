@@ -1,12 +1,11 @@
 package com.techelevator.controller;
 
-import com.techelevator.dao.UserDao;
 import com.techelevator.model.PotholeDto;
+import com.techelevator.service.PotholeService;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
 import java.util.List;
@@ -14,24 +13,57 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
-@RequestMapping(path="/potholes")
+@RequestMapping(path = "/potholes")
 public class PotholeController {
 
-    //TODO:uncomment this once service is in place
-//   private PotholeService service;
-    private UserDao userDao;
+   private final PotholeService service;
 
-    public PotholeController(UserDao userDao) {
-        //TODO:uncomment this once service is in place. Add service in line
-//        this.service = service;
-        this.userDao = userDao;
-    }
+   public PotholeController(PotholeService service) {
+      this.service = service;
+   }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
-    @RequestMapping(method = RequestMethod.GET)
-    public List<PotholeDto> findAll(Principal principal){
-        System.out.println(principal);
-        return null;
+   @PreAuthorize("permitAll")
+   @GetMapping
+   public List<PotholeDto> findAll(Principal principal) {
+      return service.getAllPotholes(principal);
+   }
 
-    }
+   @GetMapping("/{id}")
+   public PotholeDto getPotholeById(@PathVariable int id) {
+      return service.getPotholeById(id);
+   }
+
+   /**
+    * expects a request body like potholeDto
+    *
+    * @param potholeDto: {
+    *                    "location": {
+    *                    "lat": 30.333472,
+    *                    "lng": -81.470448
+    *                    },
+    *                    "photo": "default"
+    *                    }
+    * @param principal
+    * @return
+    */
+   @PostMapping
+   @ResponseStatus(HttpStatus.CREATED)
+   public PotholeDto createPothole(@RequestBody PotholeDto potholeDto, Principal principal) {
+       PotholeDto createdPothole = service.createPothole(potholeDto, principal);
+       if(createdPothole == null) {
+           throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Location invalid");
+       }
+      return service.createPothole(potholeDto, principal);
+   }
+
+   @PutMapping
+   public PotholeDto updatePothole(@RequestBody PotholeDto potholeDto) {
+      return service.updatePothole(potholeDto);
+   }
+
+   @DeleteMapping("/{id}")
+   public void deletePothole(@PathVariable int id) {
+      service.deletePothole(id);
+   }
 }
+

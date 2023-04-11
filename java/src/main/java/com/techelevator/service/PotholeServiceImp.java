@@ -1,6 +1,10 @@
 package com.techelevator.service;
 
+import com.techelevator.dao.LocationDao;
+import com.techelevator.dao.MapquestLocationDao;
 import com.techelevator.dao.PotholeDao;
+import com.techelevator.dao.UserDao;
+import com.techelevator.model.Location;
 import com.techelevator.model.PotholeDto;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +16,22 @@ import java.util.List;
 public class PotholeServiceImp implements PotholeService{
 
    private PotholeDao dao;
+   private LocationDao locationDao;
+   private UserDao userDao;
 
-   public PotholeServiceImp(PotholeDao potholeDao) {
+   public PotholeServiceImp(PotholeDao potholeDao, LocationDao locationDao, UserDao userDao) {
       this.dao = potholeDao;
+      this.locationDao = locationDao;
+      this.userDao = userDao;
    }
    @Override
    public List<PotholeDto> getAllPotholes(Principal principal) {
       return dao.findAll();
+   }
+
+   @Override
+   public PotholeDto getPotholeById(int id) {
+      return dao.findPothole(id);
    }
 
    /**
@@ -27,10 +40,12 @@ public class PotholeServiceImp implements PotholeService{
     * @return The created pothole
     */
    @Override
-   public PotholeDto createPothole(PotholeDto pothole) {
+   public PotholeDto createPothole(PotholeDto pothole, Principal principal) {
       PotholeDto createdPothole = null;
-      if(locationIsValid(pothole)) {
-         createdPothole = dao.createPothole(pothole);
+      if(pothole.getLocation().isValid()) {
+         Location fullPotholeLocation = locationDao.transformToStreetAddress(pothole);
+         pothole.setLocation(fullPotholeLocation);
+         createdPothole = dao.createPothole(pothole, userDao.findIdByUsername(principal.getName()));
       }
       return createdPothole;
    }
@@ -51,13 +66,13 @@ public class PotholeServiceImp implements PotholeService{
 
    /**
     * Delete the given pothole
-    * @param pothole pothole to be deleted
+    * @param id to be deleted
     */
    @Override
-   public void deletePothole(PotholeDto pothole) {
-      if(potholeExists(pothole)) {
-         dao.deletePothole(pothole.getPotholeId());
-      }
+   public void deletePothole(int id) {
+//      if(potholeExists(pothole)) {
+         dao.deletePothole(id);
+//      }
    }
 
    private boolean locationIsValid(PotholeDto pothole) {
