@@ -31,9 +31,13 @@
         Footer content
       </div>
     </footer>
-    
-  </div>
-</template>
+  
+  
+        </div>
+
+        </template>
+
+  
 
 <script>    
    
