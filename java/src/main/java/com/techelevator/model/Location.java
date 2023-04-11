@@ -1,9 +1,12 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 public class Location {
 
+   private int locationId;
    private String street;
    private String city;
    private String state;
@@ -11,10 +14,21 @@ public class Location {
    private double lat;
    private double lng;
 
+   public boolean isValid() {
+      if(lat != 0.0 & lng != 0.0) {
+         return true;
+      } else if(street != null & city != null & state != null & postalCode != null) {
+         return true;
+      } else {
+         return false;
+      }
+   }
+
    @Override
    public String toString() {
       return "Location{" +
-              "street='" + street + '\'' +
+              "locationId=" + locationId +
+              ", street='" + street + '\'' +
               ", city='" + city + '\'' +
               ", state='" + state + '\'' +
               ", postalCode='" + postalCode + '\'' +
@@ -28,12 +42,20 @@ public class Location {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
       Location location = (Location) o;
-      return Double.compare(location.lat, lat) == 0 && Double.compare(location.lng, lng) == 0 && street.equals(location.street) && city.equals(location.city) && state.equals(location.state) && postalCode.equals(location.postalCode);
+      return locationId == location.locationId && Double.compare(location.lat, lat) == 0 && Double.compare(location.lng, lng) == 0;
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(street, city, state, postalCode, lat, lng);
+      return Objects.hash(locationId, lat, lng);
+   }
+
+   public int getLocationId() {
+      return locationId;
+   }
+
+   public void setLocationId(int location_id) {
+      this.locationId = location_id;
    }
 
    public String getStreet() {
