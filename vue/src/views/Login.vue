@@ -1,7 +1,14 @@
 <template>
   <div id="login">
+
+   <h1> Rough Road Repairs </h1>
+   <!-- added img logo -->
+    <img src="img/Roughroadrepairs.png" alt="Logo" />
+
+    <!-- -->
+    
     <form @submit.prevent="login">
-      <h1 >Please Sign In</h1>
+      <h2 >Please Sign In</h2>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
