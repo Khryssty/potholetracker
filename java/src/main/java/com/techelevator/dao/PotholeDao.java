@@ -1,9 +1,11 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.PotholeDto;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface PotholeDao {
 
     List<PotholeDto> findAll();
