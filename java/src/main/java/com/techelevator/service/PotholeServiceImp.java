@@ -21,16 +21,21 @@ public class PotholeServiceImp implements PotholeService{
       return dao.findAll();
    }
 
+   @Override
+   public PotholeDto getPotholeById(int id) {
+      return dao.findPothole(id);
+   }
+
    /**
     * Creates a new pothole with the given information
     * @param pothole The pothole to be created
     * @return The created pothole
     */
    @Override
-   public PotholeDto createPothole(PotholeDto pothole) {
+   public PotholeDto createPothole(PotholeDto pothole, Principal principal) {
       PotholeDto createdPothole = null;
       if(locationIsValid(pothole)) {
-         createdPothole = dao.createPothole(pothole);
+         createdPothole = dao.createPothole(pothole, principal);
       }
       return createdPothole;
    }

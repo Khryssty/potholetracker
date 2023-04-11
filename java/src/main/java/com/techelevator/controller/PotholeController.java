@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.PotholeDto;
 import com.techelevator.service.PotholeService;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,13 +31,19 @@ public class PotholeController {
         return service.getAllPotholes(principal);
         }
 
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+    public PotholeDto getPotholeById(@PathVariable int id){
+        return service.getPotholeById(id);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST)
-    public PotholeDto createPothole(PotholeDto potholeDto){
-        return service.createPothole(potholeDto);
+    public PotholeDto createPothole(@RequestBody PotholeDto potholeDto, Principal principal){
+        return service.createPothole(potholeDto, principal);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public PotholeDto updatePothole(PotholeDto potholeDto){
+    public PotholeDto updatePothole(@RequestBody PotholeDto potholeDto){
         return service.updatePothole(potholeDto);
     }
 

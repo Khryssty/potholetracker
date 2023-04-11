@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 import java.awt.*;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
@@ -14,22 +15,23 @@ public class PotholeDto {
     private Date statusDate;
     private String assignedTo;
     private String address;
-    private double lat;
-    private double lng;
+    private BigDecimal lat;
+    private BigDecimal lng;
+    private String username;
 
-    public double getLat() {
+    public BigDecimal getLat() {
         return lat;
     }
 
-    public void setLat(double lat) {
+    public void setLat(BigDecimal lat) {
         this.lat = lat;
     }
 
-    public double getLng() {
+    public BigDecimal getLng() {
         return lng;
     }
 
-    public void setLng(double lng) {
+    public void setLng(BigDecimal lng) {
         this.lng = lng;
     }
 
@@ -97,17 +99,25 @@ public class PotholeDto {
         this.address = address;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof PotholeDto)) return false;
         PotholeDto that = (PotholeDto) o;
-        return potholeId == that.potholeId && locationId == that.locationId && Double.compare(that.lat, lat) == 0 && Double.compare(that.lng, lng) == 0 && Objects.equals(photo, that.photo) && Objects.equals(severity, that.severity) && Objects.equals(status, that.status) && Objects.equals(statusDate, that.statusDate) && Objects.equals(assignedTo, that.assignedTo) && Objects.equals(address, that.address);
+        return potholeId == that.potholeId && locationId == that.locationId && Objects.equals(photo, that.photo) && Objects.equals(severity, that.severity) && Objects.equals(status, that.status) && Objects.equals(statusDate, that.statusDate) && Objects.equals(assignedTo, that.assignedTo) && Objects.equals(address, that.address) && Objects.equals(lat, that.lat) && Objects.equals(lng, that.lng) && Objects.equals(username, that.username);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(potholeId, locationId, photo, severity, status, statusDate, assignedTo, address, lat, lng);
+        return Objects.hash(potholeId, locationId, photo, severity, status, statusDate, assignedTo, address, lat, lng, username);
     }
 
     @Override
@@ -123,6 +133,7 @@ public class PotholeDto {
                 ", address='" + address + '\'' +
                 ", lat=" + lat +
                 ", lng=" + lng +
+                ", username='" + username + '\'' +
                 '}';
     }
 }
