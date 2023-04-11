@@ -14,7 +14,8 @@ CREATE TABLE location
 (
 	location_id SERIAL,
 	street_address VARCHAR(128) NOT NULL,
-	lat_long POINT NOT NULL,
+	lat DECIMAL NOT NULL,
+	long DECIMAL NOT NULL,
 
 	CONSTRAINT pk_location_id PRIMARY KEY (location_id)
 );
