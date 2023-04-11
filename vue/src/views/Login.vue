@@ -1,12 +1,12 @@
 <template>
-  <div id="login">
-
-   <h1> Rough Road Repairs </h1>
-   <!-- added img logo -->
+  <div id="login">   
+     <!-- Added company header and logo -->
+ 
+   <h1> Login </h1>
+   
+   
     <img src="img/Roughroadrepairs.png" alt="Logo" />
-
-    <!-- -->
-    
+  <!-- -->
     <form @submit.prevent="login">
       <h2 >Please Sign In</h2>
       <div role="alert" v-if="invalidCredentials">
