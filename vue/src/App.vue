@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <header>
-      Rough Road Repairs
+      <!-- Rough Road Repairs-->
     </header>
 
     <nav>
@@ -102,24 +102,25 @@
 
     header {
     grid-area: header;
-    background-color: #f69a00;
+    background-color: #9dd9d2;
+    
     }
 
     nav {
         grid-area: nav;
         margin-left: 0.5rem;
-        background-color: #f2ead2;
+        background-color: #79BCB8;
     }
 
     main {
         grid-area: content;
-        background-color: #f9f5f0;
+        background-color: #5EC2B7;
     }
 
     aside {
         grid-area: side;
         margin-right: 0.5rem;
-        background-color: #f2ead2;
+        background-color: #79BCB8;
     }
 
     footer {
@@ -128,15 +129,24 @@
     }
 
     header, footer {
-        color: #ffffff;
+        color: #3a0ca3;
+        
     }
     nav, main, aside {
-        color: #74889a;
+        color: #3a0ca3;
     }
     header, footer, nav, main, aside {
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 24px;
+        font-weight: bold;
         text-transform: uppercase;
+    }
+
+    header {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 30px;
+        text-transform: uppercase;
+        text-align: center;
     }
 
     div.content {

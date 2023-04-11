@@ -1,11 +1,11 @@
 <template>
   <div id="login">   
-     <!-- Added company header and logo -->
+     <!-- Added company header and logo 
  
    <h1> Login </h1>
    
-   
-    <img src="img/Roughroadrepairs.png" alt="Logo" />
+   -->
+    <img src="img/Logo2.png" alt="Logo" />
   <!-- -->
     <form @submit.prevent="login">
       <h2 >Please Sign In</h2>
