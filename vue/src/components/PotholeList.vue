@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="pothole in this.$store.state.potholes" v-bind:key="pothole.id">
+                <tr v-for="pothole in this.$store.state.potholes" v-bind:key="pothole.potholeId">
                     <td>{{pothole.potholeId}}</td>
                     <td>{{pothole.status}}</td>
                     <td>{{pothole.statusDate}}</td>
