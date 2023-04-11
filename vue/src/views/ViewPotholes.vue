@@ -1,13 +1,16 @@
 <template>
-  <div>Placeholder to view potholes</div>
+  <div class="viewPotholes">
+        <pothole-list></pothole-list>
+  </div>
 </template>
 
 <script>
-export default {
+import PotholeList from '../components/PotholeList.vue'
 
+export default {
+    name: 'viewPotholes',
+    components:{
+        PotholeList
+    }
 }
 </script>
-
-<style>
-
-</style>
