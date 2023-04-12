@@ -1,29 +1,25 @@
 <template>
   <div class="container">
-    <header>
-      Rough Road Repairs
-    </header>
+    <!-- Adding Icons: first add the icon to the specific icons import in main.js,
+            then add the icon to the library in main.js, finally you can use the icon in your template -->
+    <header>Rough Road Repairs</header>
 
     <nav>
-      <div class="content">
+      <div id="sidebar-container" class="content">
+        <h3>Navigation</h3>
         <div>
-          <router-link v-bind:to="{ name: 'home' }">Home</router-link
-          >&nbsp;|&nbsp;
-        </div>
-        <div>
-          <router-link
-            v-bind:to="{ name: 'logout' }"
-            v-if="$store.state.token != ''"
-            >Logout</router-link
+          <router-link class="link" v-bind:to="{ name: 'home' }">
+            <font-awesome-icon icon="fa-solid fa-house" />
+            Home</router-link
           >
         </div>
         <div>
-          <router-link v-bind:to="{ name: 'viewPotholes' }"
+          <router-link class="link" v-bind:to="{ name: 'viewPotholes' }"
             >View Potholes</router-link
           >
         </div>
         <div>
-          <router-link v-bind:to="{ name: 'reportPothole' }"
+          <router-link class="link" v-bind:to="{ name: 'reportPothole' }"
             >Report Pothole</router-link
           >
         </div>
@@ -38,7 +34,7 @@
     </main>
 
     <aside>
-      <div class="content">Aside Navigation</div>
+      <user-info/>
     </aside>
 
     <footer>
@@ -50,7 +46,12 @@
   
 
 <script>
-export default {};
+import userInfo from '../src/components/UserInfo.vue';
+export default {
+  components: {
+    userInfo
+  }
+};
 </script>
 
 <!-- Need to add Holy Grail css -->
@@ -58,6 +59,7 @@ export default {};
 <style>
 body {
   margin: 0;
+  padding: 0;
 }
 
 /* Add CSS Grid here  background colors: Header - #f69a00;  Nav - #f2ead2;  
@@ -74,7 +76,7 @@ body {
 
   grid-template-columns: 200px 1fr 200px;
   grid-template-rows: 125px 1fr 85px;
-  gap: 10px;
+  gap: 4px;
 
   height: 100vh;
 }
@@ -113,29 +115,27 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #9dd9d2;
+  background-color: #9df0e6;
 }
 
 nav {
   grid-area: nav;
-  margin-left: 0.5rem;
-  background-color: #79bcb8;
+  background-color: #9df0e6;
 }
 
 main {
   grid-area: content;
-  background-color: #5ec2b7;
+  background-color: #bcf7f0;
 }
 
 aside {
   grid-area: side;
-  margin-right: 0.5rem;
-  background-color: #79bcb8;
+  background-color: #9df0e6;
 }
 
 footer {
   grid-area: footer;
-  background-color: #9dd9d2;
+  background-color: #9df0e6;
 }
 
 header,
@@ -153,7 +153,7 @@ nav,
 main,
 aside {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 24px;
+  border-radius: 4px;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -169,5 +169,19 @@ div.content {
   text-align: center;
   padding-top: 20px;
 }
-
+div#sidebar-container {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.link {
+  color: #3a0ca3;
+}
+h3 {
+  margin: 0;
+  padding: 1rem 0;
+  border-radius: 0.25rem;
+  border: 2px black solid;
+}
 </style>
