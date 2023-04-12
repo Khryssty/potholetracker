@@ -9,6 +9,7 @@
 </template>
 
 <script>
+
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
@@ -16,7 +17,7 @@ export default {
   name: "pothole-map",
   data() {
     return {
-      center: [39.739071, -75.539787],
+      center: [39.739071, -75.539787], // Lat/Long for Wilm, not a fan of hardcoding this but not sure of alternatives
       icon: L.divIcon({
         className: 'my-icon'
       }),
@@ -27,7 +28,7 @@ export default {
   },
   // props: ["lat", "lng"],
   methods: {
-    setupLeafletMap: function () {
+    setupLeafletMap() {
       const mapDiv = L.map("map").setView(this.center, 13);
       L.tileLayer(
         "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
