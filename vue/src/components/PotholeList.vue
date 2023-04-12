@@ -8,8 +8,8 @@
                     <th>STATUS</th>
                     <th>STATUS DATE</th>
                     <th>SEVERITY</th>
-                    <th>ADDRESS</th>
-                    <th>ASSIGNED TO</th>
+                    <th>ADDRESS/LAT-LONG</th>
+                    <th>REPORTED BY</th>
                     <th>PHOTO</th>                    
                 </tr>
             </thead>
@@ -19,7 +19,8 @@
                     <td>{{pothole.status}}</td>
                     <td>{{pothole.statusDate}}</td>
                     <td>{{pothole.severity}}</td>
-                    <td>{{pothole.address}}</td>
+                    <td v-if="pothole.location.street == ''">{{pothole.location.lat}}, {{pothole.location.lng}}</td>
+                    <td v-else>{{pothole.location.street}}, {{pothole.location.city}}, {{pothole.location.state}}, {{pothole.location.postalCode}}</td>
                     <td>{{pothole.username}}</td>
                     <td>{{pothole.photo}}</td>
                 </tr>              
@@ -52,6 +53,8 @@ export default {
 </script>
 
 <style scoped>
-
-</style>>
+table {
+    width: 100%;
+}
+</style>
 

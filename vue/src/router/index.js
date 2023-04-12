@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import ViewPotholes from '../views/ViewPotholes'
+import ReportPothole from '../views/ReportPothole'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -60,6 +61,14 @@ const router = new Router({
       component: ViewPotholes,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/reportPothole",
+      name:"reportPothole",
+      component: ReportPothole,
+      meta: {
+        requiresAuth: true
       }
     }
   ]
