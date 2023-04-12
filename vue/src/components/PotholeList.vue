@@ -27,10 +27,6 @@
             </tbody>
       </table>
       </div>
-      
-       <div>
-           TBD: Maybe display a map here with outstanding potholes to repair.
-       </div>
   </div>
 </template>
 
