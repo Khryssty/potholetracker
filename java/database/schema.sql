@@ -70,8 +70,9 @@ CREATE TABLE log
 	pothole_id INT NOT NULL,
 	modified_by INT NOT NULL,
 	date_modified DATE NOT NULL,
-	status_before_mod INT NOT NULL,
-	status_after_mod INT NOT NULL,
+	value_before_mod INT NOT NULL,
+	value_after_mod INT NOT NULL,
+	field_modified VARCHAR(100) NOT NULL,
 
 	CONSTRAINT pk_log_id PRIMARY KEY (log_id),
 	CONSTRAINT fk_pothole_id FOREIGN KEY (pothole_id) REFERENCES pothole(pothole_id),
