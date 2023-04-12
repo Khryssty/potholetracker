@@ -77,8 +77,8 @@ CREATE TABLE log
 	CONSTRAINT pk_log_id PRIMARY KEY (log_id),
 	CONSTRAINT fk_pothole_id FOREIGN KEY (pothole_id) REFERENCES pothole(pothole_id),
 	CONSTRAINT fk_modified_by FOREIGN KEY (modified_by) REFERENCES users(user_id),
-	CONSTRAINT fk_status_before_mod FOREIGN KEY (status_before_mod) REFERENCES status(status_id),
-	CONSTRAINT fk_status_after_mod FOREIGN KEY (status_after_mod) REFERENCES status(status_id)
+	CONSTRAINT fk_value_before_mod FOREIGN KEY (value_before_mod) REFERENCES status(status_id),
+	CONSTRAINT fk_value_after_mod FOREIGN KEY (value_after_mod) REFERENCES status(status_id)
 );
 
 COMMIT TRANSACTION;
