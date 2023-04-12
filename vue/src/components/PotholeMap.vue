@@ -3,13 +3,14 @@
     <div>
       <p>Latitude: {{latitude}}</p>
       <p>Longitude: {{longitude}}</p>
+      <button @click="createPothole">Create Pothole</button>
     </div>
     <div id="map"></div>
   </div>
 </template>
 
 <script>
-
+import potholeService from "../services/PotholeService";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
@@ -49,6 +50,40 @@ export default {
         }
         this.layer = L.marker(event.latlng, {icon: this.icon, title: event.latlng}).addTo(mapDiv);
       });
+    },
+    createPothole() {
+      const newPothole = {
+        location: {
+          lat: this.latitude,
+          lng: this.longitude
+        },
+        photo: 'placeholder'
+      };
+      potholeService
+        .submitPothole(newPothole)
+        .then((response) => {
+          if (response.status === 201) {
+              this.$router.push({name: "viewPotholes"});
+          }
+        })
+        .catch((error) => {
+          this.handleErrorResponse(error, "adding");
+        });
+    },
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " pothole. Response received was '" +
+          error.response.status +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg = "Error " + verb + " pothole. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " pothole. Request could not be created.";
+      }
     },
   },
   mounted() {

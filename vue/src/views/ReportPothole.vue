@@ -1,7 +1,8 @@
 <template>
   <div class="container">
       Report A Pothole:
-    <div v-show="errorMsg !== ''">
+      <pothole-map/>
+    <!-- <div v-show="errorMsg !== ''">
         <h2>{{errorMsg}}</h2>
     </div>
     <form @submit.prevent="createPothole">
@@ -21,14 +22,13 @@
           <p>photo list placeholder</p>
       </div>
       <input type="submit" />
-    </form>
-    <pothole-map/>
-    <!-- <pothole-map :lat='pothole.location.lat' :lng='pothole.location.lng'/> -->
+    </form> -->
+    
   </div>
 </template>
 
 <script>
-import potholeService from "../services/PotholeService";
+// import potholeService from "../services/PotholeService";
 import PotholeMap from "../components/PotholeMap.vue";
 export default {
   components: { PotholeMap },
@@ -45,35 +45,35 @@ export default {
       errorMsg: ''
     };
   },
-  methods: {
-    createPothole() {
-      potholeService
-        .submitPothole(this.pothole)
-        .then((response) => {
-          if (response.status === 201) {
-              this.$router.push({name: "viewPotholes"});
-          }
-        })
-        .catch((error) => {
-          this.handleErrorResponse(error, "adding");
-        });
-    },
-    handleErrorResponse(error, verb) {
-      if (error.response) {
-        this.errorMsg =
-          "Error " +
-          verb +
-          " pothole. Response received was '" +
-          error.response.status +
-          "'.";
-      } else if (error.request) {
-        this.errorMsg = "Error " + verb + " pothole. Server could not be reached.";
-      } else {
-        this.errorMsg =
-          "Error " + verb + " pothole. Request could not be created.";
-      }
-    },
-  },
+//   methods: {
+//     createPothole() {
+//       potholeService
+//         .submitPothole(this.pothole)
+//         .then((response) => {
+//           if (response.status === 201) {
+//               this.$router.push({name: "viewPotholes"});
+//           }
+//         })
+//         .catch((error) => {
+//           this.handleErrorResponse(error, "adding");
+//         });
+//     },
+//     handleErrorResponse(error, verb) {
+//       if (error.response) {
+//         this.errorMsg =
+//           "Error " +
+//           verb +
+//           " pothole. Response received was '" +
+//           error.response.status +
+//           "'.";
+//       } else if (error.request) {
+//         this.errorMsg = "Error " + verb + " pothole. Server could not be reached.";
+//       } else {
+//         this.errorMsg =
+//           "Error " + verb + " pothole. Request could not be created.";
+//       }
+//     },
+//   },
 };
 </script>
 
@@ -83,10 +83,10 @@ div.container {
     flex-direction: column;
     align-items: center;
 }
-form {
+/* form {
     width: 35%;
     display: flex;
     flex-direction: column;
     gap: 5px;
-}
+} */
 </style>

@@ -135,7 +135,7 @@ aside {
 
 footer {
   grid-area: footer;
-  background-color: #331312;
+  background-color: #9dd9d2;
 }
 
 header,
@@ -169,4 +169,5 @@ div.content {
   text-align: center;
   padding-top: 20px;
 }
+
 </style>
