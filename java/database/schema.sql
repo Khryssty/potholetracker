@@ -70,14 +70,15 @@ CREATE TABLE log
 	pothole_id INT NOT NULL,
 	modified_by INT NOT NULL,
 	date_modified DATE NOT NULL,
-	status_before_mod INT NOT NULL,
-	status_after_mod INT NOT NULL,
+	value_before_mod INT NOT NULL,
+	value_after_mod INT NOT NULL,
+	field_modified VARCHAR(100) NOT NULL,
 
 	CONSTRAINT pk_log_id PRIMARY KEY (log_id),
 	CONSTRAINT fk_pothole_id FOREIGN KEY (pothole_id) REFERENCES pothole(pothole_id),
 	CONSTRAINT fk_modified_by FOREIGN KEY (modified_by) REFERENCES users(user_id),
-	CONSTRAINT fk_status_before_mod FOREIGN KEY (status_before_mod) REFERENCES status(status_id),
-	CONSTRAINT fk_status_after_mod FOREIGN KEY (status_after_mod) REFERENCES status(status_id)
+	CONSTRAINT fk_value_before_mod FOREIGN KEY (value_before_mod) REFERENCES status(status_id),
+	CONSTRAINT fk_value_after_mod FOREIGN KEY (value_after_mod) REFERENCES status(status_id)
 );
 
 COMMIT TRANSACTION;
