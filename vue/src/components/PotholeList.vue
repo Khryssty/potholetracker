@@ -20,8 +20,7 @@
           >
             <td>{{ pothole.potholeId }}</td>
 
-            <!-- In the dropdown list, i need the current status to be displayed instead of blank -->
-            <td v-if="currentUser && currentUser.authorities[0].name === 'ROLE_ADMIN'">
+            <td v-if="currentUser.username && currentUser.authorities[0].name === 'ROLE_ADMIN'">
               <select class="status" v-model="pothole.status" v-bind:key="pothole.status">
                 <option
                   v-for="option in statusOptions"
@@ -34,11 +33,11 @@
               </select>
             </td>
 
-            <!-- List of potholes is not displayed if no logged in user. Tried using v-else-if currentUser isEmpty or null, did not work-->
+      
             <td v-else>{{ pothole.status }}</td>            
 
-            <!-- Once display issues resolved in status, this will be updated accordingly. -->
-            <td v-if="currentUser && currentUser.authorities[0].name === 'ROLE_ADMIN'">
+            
+            <td v-if="currentUser.username && currentUser.authorities[0].name === 'ROLE_ADMIN'">
               <select class="severity" v-model="pothole.severity" v-bind:key="pothole.severity">
                 <option 
                   v-for="option in severityOptions"
@@ -75,8 +74,8 @@ import potholeService from "../services/PotholeService";
 
 export default {
   name: "pothole-list",
-  computed: {
-    currentUser() {
+  computed: {    
+    currentUser() {      
       return this.$store.state.user;
     },
     statusOptions() {
