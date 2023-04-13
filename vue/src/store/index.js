@@ -20,7 +20,18 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    potholes: []
+    potholes: [],
+    statusOptions: [
+      {label: 'Reviewed', value: 'reviewed'},
+      {label: 'Inspected', value: 'inspected'},
+      {label: 'Repaired', value: 'repaired'},
+      {label: 'Deleted', value: 'deleted'}
+    ],
+    severityOptions: [
+      {label: 'Low', value: 'low'},
+      {label: 'Medium', value: 'medium'},
+      {label: 'High', value: 'high'}
+    ]
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
