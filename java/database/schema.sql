@@ -57,6 +57,8 @@ CREATE TABLE pothole
 	photo VARCHAR(128) NULL, --Maybe default to a stock photo
 	severity_id INT DEFAULT 1, -- id of 1 = 'none'
 	status_id INT DEFAULT 1, -- id of 1 = 'reported'
+	date_modified timestamp,
+	modified_by int,
 
 	CONSTRAINT pk_pothole_id PRIMARY KEY (pothole_id),
 	CONSTRAINT fk_location_id FOREIGN KEY (location_id) REFERENCES location(location_id),
@@ -69,7 +71,7 @@ CREATE TABLE log
 	log_id SERIAL,
 	pothole_id INT NOT NULL,
 	modified_by INT NOT NULL,
-	date_modified DATE NOT NULL,
+	date_modified timestamp NOT NULL,
 	value_before_mod INT NOT NULL,
 	value_after_mod INT NOT NULL,
 	field_modified VARCHAR(100) NOT NULL,
