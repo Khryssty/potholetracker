@@ -15,9 +15,21 @@
             </thead>
             <tbody>
                 <tr v-for="pothole in this.$store.state.potholes" v-bind:key="pothole.potholeId">
-                    <td>{{pothole.potholeId}}</td>
-                    <td>{{pothole.status}}</td>
+                    <td>{{pothole.potholeId}}</td>                    
+                    
+                    <!-- In the dropdown list, i need the current status to be displayed instead of blank -->
+                    <td v-if = "currentUser && currentUser.authorities[0].name === 'ROLE_ADMIN'">    
+                        <select v-model="pothole.status" v-bind:key="pothole.status">
+                            <option v-for="option in statusOptions" v-bind:key="option.value">{{option.label}}</option>
+                        </select>                        
+                    </td>                    
+
+                    <!-- List of potholes is not displayed if no logged in user. Tried using v-else-if currentUser isEmpty or null, did not work-->                    
+                    <td v-else>{{pothole.status}}</td>                    
+
                     <td>{{pothole.statusDate}}</td>
+
+                    <!-- Once display issues resolved in status, this will be updated accordingly. -->                    
                     <td>{{pothole.severity}}</td>
                     <td v-if="pothole.location.street == ''">{{pothole.location.lat}}, {{pothole.location.lng}}</td>
                     <td v-else>{{pothole.location.street}}, {{pothole.location.city}}, {{pothole.location.state}}, {{pothole.location.postalCode}}</td>
@@ -34,7 +46,15 @@
 import potholeService from '../services/PotholeService';
 
 export default {
-    name: 'pothole-list',    
+    name: 'pothole-list',
+    computed:{
+        currentUser(){
+            return this.$store.state.user;
+        },
+        statusOptions(){
+            return this.$store.state.statusOptions;
+        }
+    },
     methods: {
         getAllPotholes() {
             potholeService.viewPotholes().then(response => {
@@ -43,7 +63,7 @@ export default {
         }    
     },
     created(){
-        this.getAllPotholes();
+        this.getAllPotholes();     
     }
 }
 </script>

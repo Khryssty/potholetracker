@@ -2,11 +2,14 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Location;
 import com.techelevator.model.PotholeDto;
+import org.apache.tomcat.jni.Local;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,44 +69,78 @@ public class JdbcPotholeDao implements PotholeDao {
               potholeLocation.getState(), potholeLocation.getPostalCode(), potholeLocation.getLat(), potholeLocation.getLng());
 
       //Use the location id that was returned to insert into pothole table.
-      sql = "INSERT INTO pothole(location_id, photo, severity_id, status_id) " +
-              "VALUES (?, ?, ?, ?) RETURNING pothole_id;";
-      Integer potholeId = jdbcTemplate.queryForObject(sql, Integer.class, locationId, potholeDto.getPhoto(), 1, 1);
+      sql = "INSERT INTO pothole(location_id, photo, severity_id, status_id, date_modified, modified_by) " +
+              "VALUES (?, ?, ?, ?, ?, ?) RETURNING pothole_id;";
+      Integer potholeId = jdbcTemplate.queryForObject(sql, Integer.class, locationId, potholeDto.getPhoto(), 1, 1, LocalDateTime.now(), createdByUserId);
 
       // Returned pothole id will be used to insert to log table.
-      sql = "INSERT INTO log (pothole_id, modified_by, date_modified, status_before_mod, status_after_mod) " +
-              "VALUES (?, ?, ?, ?, ?);";
-      jdbcTemplate.update(sql, potholeId, createdByUserId, LocalDate.now(), 1, 1);
+      sql = "INSERT INTO log (pothole_id, modified_by, date_modified, value_before_mod, value_after_mod, field_modified) " +
+              "VALUES (?, ?, ?, ?, ?, ?);";
+      jdbcTemplate.update(sql, potholeId, createdByUserId, LocalDateTime.now(), 1, 1, "status_id");
       return findPothole(potholeId);
    }
 
    @Override
-   public PotholeDto updatePothole(PotholeDto potholeDto) {
-//TODO: Update pothole
-//        if (potholeDto.)
-//
-//        String sql = "UPDATE pothole " +
-//                    "SET "
+   public PotholeDto updatePothole(PotholeDto oldPothole, PotholeDto newPothole, int userId) {
+         String sql = "";
 
-      return null;
+      if (!oldPothole.getStatus().equals(newPothole.getStatus())){   //Compare pothole status
+         //Retrieve the old status id first
+            sql = "SELECT status_id FROM pothole WHERE pothole_id = ?;";
+            Integer oldStatusId = jdbcTemplate.queryForObject(sql, Integer.class, newPothole.getPotholeId());
+
+         //Update pothole table and retrieve the new status_id
+            sql = "UPDATE pothole SET status_id = (SELECT status_id from status WHERE status = ?) " +
+                    "WHERE pothole_id = ? RETURNING status_id;";
+            Integer newStatusId = jdbcTemplate.queryForObject(sql, Integer.class, newPothole.getStatus(), newPothole.getPotholeId());
+
+        //Insert a new record in the log table with the status old and new values
+            sql = "INSERT INTO log(pothole_id, modified_by, date_modified, value_before_mod, value_after_mod, field_modified) " +
+               "VALUES (?, ?, ?, ?, ?, ?);";
+            jdbcTemplate.update(sql, newPothole.getPotholeId(), userId, LocalDateTime.now(), oldStatusId, newStatusId, "status_id");
+
+      }
+
+      if (!oldPothole.getSeverity().equals(newPothole.getSeverity())){ //compare Severity
+         //Retrieve the old severity id
+         sql = "SELECT severity_id from pothole WHERE pothole_id = ?;";
+         Integer oldSeverityId = jdbcTemplate.queryForObject(sql, Integer.class, newPothole.getPotholeId());
+
+         //Update the pothole table and retrieve the new severity_id
+         sql = "UPDATE pothole SET severity_id = (SELECT severity_id from severity WHERE severity = ?) " +
+                 "WHERE pothole_id = ? RETURNING severity_id;";
+         Integer newSeverityId = jdbcTemplate.queryForObject(sql, Integer.class, newPothole.getSeverity(), newPothole.getPotholeId());
+
+         //Insert a new record in the log table with the severity old and new values
+         sql = "INSERT INTO log(pothole_id, modified_by, date_modified, value_before_mod, value_after_mod, field_modified) " +
+                 "VALUES (?, ?, ?, ?, ?, ?);";
+         jdbcTemplate.update(sql, newPothole.getPotholeId(), userId, LocalDateTime.now(), oldSeverityId, newSeverityId, "severity_id");
+      }
+      return findPothole(newPothole.getPotholeId());
    }
 
    @Override
    public void deletePothole(int id) {
-      // Query the pothole
+       String sql = "";
+       //Query the old status id from pothole table
+       sql  = "SELECT status_id from pothole WHERE pothole_id = ?;";
+       Integer oldStatusId = jdbcTemplate.queryForObject(sql, Integer.class, id);
+
+      // Query the potholeDto making sure it's tagged as deleted
       PotholeDto potholeDto = findPothole(id);
+
 
       if (!potholeDto.getStatus().equalsIgnoreCase("deleted")) {
 
          // The pothole record is not deleted from the database but tagged as DELETED status for audit trail purposes.
-         String sql = "UPDATE pothole SET status_id = 5 WHERE pothole_id = ?;";
+          sql = "UPDATE pothole SET status_id = 5 WHERE pothole_id = ?;";
          jdbcTemplate.update(sql, id);
 
          // TODO: Insert a record in log table for deleted status.
 
-         sql = "INSERT INTO log (pothole_id, modified_by, date_modified, status_before_mod, status_after_mod) " +
-                 "VALUES ( ?, ?, ?, ?, ?);";
-         //        jdbcTemplate.update(sql, )
+         sql = "INSERT INTO log (pothole_id, modified_by, date_modified, value_before_mod, value_after_mod, field_modified) " +
+                 "VALUES ( ?, ?, ?, ?, ?, ?);";
+         //jdbcTemplate.update(sql, id, LocalDateTime.now(), potholeDto.)
       }
 
    }

@@ -12,6 +12,6 @@ public interface PotholeDao {
     List<PotholeDto> findAll();
     PotholeDto findPothole(int id);
     PotholeDto createPothole(PotholeDto potholeDto, int createdByUserId);
-    PotholeDto updatePothole(PotholeDto potholeDto);
+    PotholeDto updatePothole(PotholeDto oldPothole, PotholeDto newPothole, int userId);
     void deletePothole(int id);
 }

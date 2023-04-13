@@ -57,8 +57,8 @@ public class PotholeController {
    }
 
    @PutMapping
-   public PotholeDto updatePothole(@RequestBody PotholeDto potholeDto) {
-      return service.updatePothole(potholeDto);
+   public PotholeDto updatePothole(@RequestBody PotholeDto potholeDto, Principal principal) {
+      return service.updatePothole(potholeDto, principal);
    }
 
    @DeleteMapping("/{id}")

@@ -10,7 +10,7 @@ public interface PotholeService {
    List<PotholeDto> getAllPotholes(Principal principal);
    PotholeDto getPotholeById(int id);
    PotholeDto createPothole(PotholeDto pothole, Principal principal);
-   PotholeDto updatePothole(PotholeDto potholeToUpdate);
+   PotholeDto updatePothole(PotholeDto potholeToUpdate, Principal principal);
    void deletePothole(int id);
 
 }
