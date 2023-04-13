@@ -60,7 +60,7 @@ public class PotholeController {
    public PotholeDto updatePothole(@RequestBody PotholeDto potholeDto, Principal principal) {
       return service.updatePothole(potholeDto, principal);
    }
-
+   @PreAuthorize("hasRole('ROLE_ADMIN')")
    @DeleteMapping("/{id}")
    public void deletePothole(@PathVariable int id) {
       service.deletePothole(id);
