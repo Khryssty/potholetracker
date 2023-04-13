@@ -1,6 +1,6 @@
 <template>
   <div class="viewPotholes">
-        <pothole-list></pothole-list>
+        <pothole-list/>
         <pothole-list-as-map/>
   </div>
 </template>

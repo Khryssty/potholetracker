@@ -63,7 +63,7 @@ public class PotholeServiceImp implements PotholeService {
    @Override
    public PotholeDto updatePothole(PotholeDto potholeToUpdate, Principal principal) {
       PotholeDto potholeAfterUpdate = null;
-      if (potholeExists(potholeToUpdate)) {
+      if (potholeExists(potholeToUpdate.getPotholeId())) {
          PotholeDto oldPothole = dao.findPothole(potholeToUpdate.getPotholeId());
          potholeAfterUpdate = dao.updatePothole(oldPothole, potholeToUpdate, userDao.findIdByUsername(principal.getName()));
       }
@@ -77,19 +77,19 @@ public class PotholeServiceImp implements PotholeService {
     */
    @Override
    public void deletePothole(int id) {
-//      if(potholeExists(pothole)) {
+      if(potholeExists(id)) {
       dao.deletePothole(id);
-//      }
+      }
    }
 
    private boolean locationIsValid(PotholeDto pothole) {
       return true;
    }
 
-   private boolean potholeExists(PotholeDto potholeDto) {
+   private boolean potholeExists(int id) {
       List<PotholeDto> potholes = dao.findAll();
       for (PotholeDto ph : potholes) {
-         if (ph.getPotholeId() == potholeDto.getPotholeId()) {
+         if (ph.getPotholeId() == id) {
             return true;
          }
       }

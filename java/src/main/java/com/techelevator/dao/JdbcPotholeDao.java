@@ -30,7 +30,8 @@ public class JdbcPotholeDao implements PotholeDao {
               "JOIN severity sev ON p.severity_id = sev.severity_id " +
               "JOIN status stat ON p.status_id = stat.status_id " +
               "JOIN log on p.pothole_id = log.pothole_id " +
-              "JOIN users u ON log.modified_by = u.user_id;";
+              "JOIN users u ON log.modified_by = u.user_id " +
+              "WHERE stat.status <> 'deleted';";
 
       SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
       while (results.next()) {
