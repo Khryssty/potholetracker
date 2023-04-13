@@ -89,10 +89,10 @@ public class JdbcPotholeDao implements PotholeDao {
             Integer oldStatusId = jdbcTemplate.queryForObject(sql, Integer.class, newPothole.getPotholeId());
 
          //Update pothole table and retrieve the new status_id
-            sql = "UPDATE pothole SET status_id = (SELECT status_id from status WHERE status = ?) " +
+            sql = "UPDATE pothole SET status_id = (SELECT status_id from status WHERE status = ?), " +
                     "date_modified = ?, modified_by = ? " +
                     "WHERE pothole_id = ? RETURNING status_id;";
-            Integer newStatusId = jdbcTemplate.queryForObject(sql, Integer.class, newPothole.getStatus(),  LocalDateTime.now(), userId, newPothole.getPotholeId());
+            Integer newStatusId = jdbcTemplate.queryForObject(sql, Integer.class, newPothole.getStatus(), LocalDateTime.now(), userId, newPothole.getPotholeId());
 
         //Insert a new record in the log table with the status old and new values
             sql = "INSERT INTO log(pothole_id, modified_by, date_modified, value_before_mod, value_after_mod, field_modified) " +
@@ -107,7 +107,7 @@ public class JdbcPotholeDao implements PotholeDao {
          Integer oldSeverityId = jdbcTemplate.queryForObject(sql, Integer.class, newPothole.getPotholeId());
 
          //Update the pothole table and retrieve the new severity_id
-         sql = "UPDATE pothole SET severity_id = (SELECT severity_id from severity WHERE severity = ?) " +
+         sql = "UPDATE pothole SET severity_id = (SELECT severity_id from severity WHERE severity = ?), " +
                  "date_modified = ?, modified_by = ? " +
                  "WHERE pothole_id = ? RETURNING severity_id;";
          Integer newSeverityId = jdbcTemplate.queryForObject(sql, Integer.class, newPothole.getSeverity(), LocalDateTime.now(), userId, newPothole.getPotholeId());
