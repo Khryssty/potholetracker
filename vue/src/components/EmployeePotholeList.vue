@@ -36,7 +36,13 @@
                     <td>{{pothole.username}}</td>
                     
                     <td>{{pothole.photo}}</td>
-                    <a href="#" v-on:click="deleteTopic(topic.id)">Delete</a>
+
+
+
+                      <!--ADDED TO DELETE -->
+                    <td v-if="currentUser && currentUser.authorities[0].name === 'ROLE_ADMIN'">
+                    <button @click="deletePothole(pothole.potholeId)">Delete</button>
+
                 </tr>              
             </tbody>
       </table>
@@ -64,11 +70,14 @@ export default {
             });
         }    
     }, 
-    //Need to update method  
-    deleted(){
-        this.deletePotholes();     
+    //Need to fix 
+    deletePothole(id) {
+        potholeService.deletePothole(id).then()) => {
+            this.getAllPotholes();
+        }
+    }    
     }
-}
+
 </script>
 
 <style scoped>
