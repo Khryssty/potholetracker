@@ -22,12 +22,14 @@ export default new Vuex.Store({
     user: currentUser || {},
     potholes: [],
     statusOptions: [
+      {label: 'Reported', value: 'reported'},
       {label: 'Reviewed', value: 'reviewed'},
       {label: 'Inspected', value: 'inspected'},
       {label: 'Repaired', value: 'repaired'},
       {label: 'Deleted', value: 'deleted'}
     ],
     severityOptions: [
+      {label: 'None', value: 'none'},
       {label: 'Low', value: 'low'},
       {label: 'Medium', value: 'medium'},
       {label: 'High', value: 'high'}

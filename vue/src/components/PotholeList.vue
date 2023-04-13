@@ -30,6 +30,8 @@
                 <option
                   v-for="option in statusOptions"
                   v-bind:key="option.value"
+                  v-bind:value="option.value"
+                  v-bind:selected="pothole.status === option.value"
                 >
                   {{ option.label }}
                 </option>
