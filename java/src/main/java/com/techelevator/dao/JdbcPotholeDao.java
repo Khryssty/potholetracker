@@ -24,15 +24,13 @@ public class JdbcPotholeDao implements PotholeDao {
    @Override
    public List<PotholeDto> findAll() {
       List<PotholeDto> potholes = new ArrayList<>();
-      String sql = "SELECT p.pothole_id, l.location_id, p.photo, sev.severity, stat.status, log.date_modified, log.modified_by, l.street, l.city, l.state, l.postalCode, l.lat, l.long, u.username " +
+      String sql = "SELECT p.pothole_id, l.location_id, p.photo, sev.severity, stat.status, p.date_modified, p.modified_by, l.street, l.city, l.state, l.postalCode, l.lat, l.long, u.username " +
               "FROM pothole p " +
               "JOIN location l ON p.location_id = l.location_id " +
               "JOIN severity sev ON p.severity_id = sev.severity_id " +
               "JOIN status stat ON p.status_id = stat.status_id " +
-              "JOIN log on p.pothole_id = log.pothole_id " +
-              "JOIN users u ON log.modified_by = u.user_id " +
-              "WHERE stat.status <> 'deleted' OR stat.status <> 'repaired'" +
-              ";";
+              "JOIN users u ON p.modified_by = u.user_id " +
+              "WHERE stat.status <> 'deleted' OR stat.status <> 'repaired';";
 
       SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
       while (results.next()) {
@@ -44,13 +42,12 @@ public class JdbcPotholeDao implements PotholeDao {
    @Override
    public PotholeDto findPothole(int id) {
       PotholeDto potholeDto = new PotholeDto();
-      String sql = "SELECT p.pothole_id, l.location_id, p.photo, sev.severity, stat.status, log.date_modified, log.modified_by, l.street, l.city, l.state, l.postalCode, l.lat, l.long, u.username " +
+      String sql = "SELECT p.pothole_id, l.location_id, p.photo, sev.severity, stat.status, p.date_modified, p.modified_by, l.street, l.city, l.state, l.postalCode, l.lat, l.long, u.username " +
               "FROM pothole p " +
               "JOIN location l ON p.location_id = l.location_id " +
               "JOIN severity sev ON p.severity_id = sev.severity_id " +
               "JOIN status stat ON p.status_id = stat.status_id " +
-              "JOIN log on p.pothole_id = log.pothole_id " +
-              "JOIN users u on log.modified_by = u.user_id " +
+              "JOIN users u on p.modified_by = u.user_id " +
               "WHERE p.pothole_id = ?;";
 
       SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
@@ -93,8 +90,9 @@ public class JdbcPotholeDao implements PotholeDao {
 
          //Update pothole table and retrieve the new status_id
             sql = "UPDATE pothole SET status_id = (SELECT status_id from status WHERE status = ?) " +
+                    "date_modified = ?, modified_by = ? " +
                     "WHERE pothole_id = ? RETURNING status_id;";
-            Integer newStatusId = jdbcTemplate.queryForObject(sql, Integer.class, newPothole.getStatus(), newPothole.getPotholeId());
+            Integer newStatusId = jdbcTemplate.queryForObject(sql, Integer.class, newPothole.getStatus(),  LocalDateTime.now(), userId, newPothole.getPotholeId());
 
         //Insert a new record in the log table with the status old and new values
             sql = "INSERT INTO log(pothole_id, modified_by, date_modified, value_before_mod, value_after_mod, field_modified) " +
@@ -110,8 +108,9 @@ public class JdbcPotholeDao implements PotholeDao {
 
          //Update the pothole table and retrieve the new severity_id
          sql = "UPDATE pothole SET severity_id = (SELECT severity_id from severity WHERE severity = ?) " +
+                 "date_modified = ?, modified_by = ? " +
                  "WHERE pothole_id = ? RETURNING severity_id;";
-         Integer newSeverityId = jdbcTemplate.queryForObject(sql, Integer.class, newPothole.getSeverity(), newPothole.getPotholeId());
+         Integer newSeverityId = jdbcTemplate.queryForObject(sql, Integer.class, newPothole.getSeverity(), LocalDateTime.now(), userId, newPothole.getPotholeId());
 
          //Insert a new record in the log table with the severity old and new values
          sql = "INSERT INTO log(pothole_id, modified_by, date_modified, value_before_mod, value_after_mod, field_modified) " +
