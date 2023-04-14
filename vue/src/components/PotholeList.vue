@@ -18,10 +18,14 @@
             v-for="pothole in $store.state.potholes"
             v-bind:key="pothole.potholeId"
           >
-            <td>{{ pothole.potholeId }}</td>
+            <td>{{ pothole.potholeId }}
+              <button v-bind:key="pothole.potholeId" v-if = "hasChanges" v-on:click="saveChanges(pothole)">Save</button>  
+            </td>            
 
-            <td v-if="currentUser.username && currentUser.authorities[0].name === 'ROLE_ADMIN'">
-              <select class="status" v-model="pothole.status" v-bind:key="pothole.status">
+          <template v-if="currentUser.username && currentUser.authorities[0].name === 'ROLE_ADMIN'">
+            
+            <td>
+              <select class="status" v-model="pothole.status" v-bind:key="pothole.status" @change="onStatusChange">
                 <option
                   v-for="option in statusOptions"
                   v-bind:key="option.value"
@@ -30,15 +34,11 @@
                 >
                   {{ option.label }}
                 </option>
-              </select>
-            </td>
-
-      
-            <td v-else>{{ pothole.status }}</td>            
-
+              </select>              
+            </td>                    
             
-            <td v-if="currentUser.username && currentUser.authorities[0].name === 'ROLE_ADMIN'">
-              <select class="severity" v-model="pothole.severity" v-bind:key="pothole.severity">
+            <td>
+              <select class="severity" v-model="pothole.severity" v-bind:key="pothole.severity" @change="onSeverityChange">>
                 <option 
                   v-for="option in severityOptions"
                   v-bind:key="option.value"
@@ -47,8 +47,14 @@
                   {{option.label}}
                 </option>
               </select>            
-            </td>
-            <td v-else>{{ pothole.severity }}</td>
+            </td>                            
+         </template>   
+
+
+         <template v-else>
+            <td>{{ pothole.status }}</td>    
+            <td>{{ pothole.severity }}</td>
+         </template>
 
             <td>{{ pothole.statusDate }}</td>
             <td>{{ pothole.username }}</td>
@@ -62,6 +68,7 @@
             </td>
             
             <td>{{ pothole.photo }}</td>
+            <!-- <td v-if ="hasChanges"><button v-on:click="saveChanges(pothole)">Save</button></td>     -->
           </tr>
         </tbody>
       </table>
@@ -74,6 +81,12 @@ import potholeService from "../services/PotholeService";
 
 export default {
   name: "pothole-list",
+  data(){
+  return {
+      hasChanges: false  
+    }
+    
+  }, 
   computed: {    
     currentUser() {      
       return this.$store.state.user;
@@ -91,6 +104,19 @@ export default {
         this.$store.commit("SET_POTHOLES", response.data);
       });
     },
+    onStatusChange(){
+      this.hasChanges = true
+    },
+    onSeverityChange(){
+      this.hasChanges = true
+    },
+    saveChanges(pothole){
+       //execute the update
+       potholeService.updatePothole(pothole).then((response) => {
+         this.$store.commit("SET_POTHOLES", response.data);
+       });
+      this.hasChanges = false
+    }
   },
   created() {
     this.getAllPotholes();
