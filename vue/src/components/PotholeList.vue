@@ -125,8 +125,23 @@ export default {
 </script>
 
 <style scoped>
+
 table {
-  width: 100%;
+  /* added */ border-collapse: collapse;
+               width: 100%; /* given */
+               border-color: grey; /* added */
+}
+
+tr {
+  border: 5px solid #5D576B; /* added */
+  border-radius: 25px;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+}
+td {
+  border: 5px solid #5D576B; /* added */
+  
 }
 </style>
 

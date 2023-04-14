@@ -8,8 +8,9 @@
   <div class="container">
    <p> WELCOME TO ROUGH ROAD REPAIRS, AN APPLICATION FOR VIEW AND/OR REPORTING POTHOLES AND ALLOWING CITIES TO REPAIR AT THE EARLIEST.</p>
   </div>
-    <img src="img/logo3.png" alt="Logo" />
-  <!-- -->
+
+
+   <!-- <img src="img/logo3.png" alt="Logo" /> -->
     
     <form @submit.prevent="login">
       <h2 >Please Sign In</h2>

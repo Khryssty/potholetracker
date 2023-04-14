@@ -2,7 +2,8 @@
   <div class="container">
     <!-- Adding Icons: first add the icon to the specific icons import in main.js,
             then add the icon to the library in main.js, finally you can use the icon in your template -->
-    <header>Rough Road Repairs</header>
+    <header><img src="img/Logo4.png" alt="Logo" /></header>
+    
 
     <nav>
       <div id="sidebar-container" class="content">
@@ -115,27 +116,29 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #9df0e6;
+  background-color: #AFB1DB;
 }
 
 nav {
   grid-area: nav;
-  background-color: #9df0e6;
+  background-color: #AFB1DB;
 }
+
+
 
 main {
   grid-area: content;
-  background-color: #bcf7f0;
+  background-color: #BCBBB7;
 }
 
 aside {
   grid-area: side;
-  background-color: #9df0e6;
+  background-color: #4361ee;
 }
 
 footer {
   grid-area: footer;
-  background-color: #9df0e6;
+  background-color: #AFB1DB;
 }
 
 header,
@@ -163,6 +166,10 @@ header {
   font-size: 30px;
   text-transform: uppercase;
   text-align: center;
+}
+img{
+  height: 110px;
+  width: 150px;
 }
 
 div.content {

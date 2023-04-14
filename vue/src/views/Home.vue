@@ -7,13 +7,17 @@
       to review reported potholes and make updates as well as schedule repairs accordingly.
     </p>
 
+    <table-format/>
+
     
     
   </div>
 </template>
 
 <script>
+import TableFormat from '../components/TableFormat.vue';
 export default {
+  components: { TableFormat },
   name: "home"
 };
 </script>
