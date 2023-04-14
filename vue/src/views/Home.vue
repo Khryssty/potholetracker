@@ -19,7 +19,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
   div.home {
     display: flex;
     flex-direction: column;

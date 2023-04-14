@@ -5,8 +5,12 @@
    <h1> Login </h1>
    
    -->
-    <img src="img/Logo2.png" alt="Logo" />
+  <div class="container">
+   <p> WELCOME TO ROUGH ROAD REPAIRS, AN APPLICATION FOR VIEW AND/OR REPORTING POTHOLES AND ALLOWING CITIES TO REPAIR AT THE EARLIEST.</p>
+  </div>
+    <img src="img/logo3.png" alt="Logo" />
   <!-- -->
+    
     <form @submit.prevent="login">
       <h2 >Please Sign In</h2>
       <div role="alert" v-if="invalidCredentials">
@@ -71,8 +75,23 @@ export default {
 <style scoped>
 .form-input-group {
   margin-bottom: 1rem;
+  text-align: center;
 }
 label {
   margin-right: 0.5rem;
 }
+
+.container{ 
+  border: 4px solid gray;
+  max-width: 1850px;
+  margin: auto;
+  padding: 1rem;
+  text-align: center;
+
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  
+} 
+
 </style>

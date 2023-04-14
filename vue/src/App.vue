@@ -167,7 +167,7 @@ header {
 
 div.content {
   text-align: center;
-  padding-top: 20px;
+  /* padding-top: 20px; */
 }
 div#sidebar-container {
   padding: 0;
