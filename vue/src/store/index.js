@@ -17,9 +17,10 @@ if(currentToken != null) {
 }
 
 export default new Vuex.Store({
-  state: {
+  state: {    
     token: currentToken || '',
     user: currentUser || {},
+    activePothole: 0,
     potholes: [],
     statusOptions: [
       {label: 'Reported', value: 'reported'},
@@ -34,6 +35,11 @@ export default new Vuex.Store({
       {label: 'Medium', value: 'medium'},
       {label: 'High', value: 'high'}
     ]
+  },
+  getters: {
+    pothole(state){
+      return state.potholes.find(p => p.potholeId == state.activePothole);
+    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -54,6 +60,9 @@ export default new Vuex.Store({
     },
     SET_POTHOLES(state, data){
       state.potholes = data;
+    },
+    SET_ACTIVE_POTHOLE(state, potholeId){
+      state.activePothole = potholeId;
     }
   }
 })

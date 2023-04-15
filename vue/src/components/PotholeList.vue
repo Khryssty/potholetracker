@@ -17,10 +17,13 @@
           <template v-for="pothole in $store.state.potholes">            
             <template  v-if="!(!currentUser.username || currentUser.authorities[0].name !== 'ROLE_ADMIN') ||
                   !(pothole.status === 'deleted' || pothole.status === 'repaired')">                  
+              
               <tr v-bind:key="pothole.potholeId">
-                  <td>{{ pothole.potholeId }}                      
+
+                 <router-link :to = "({name: 'viewPotholeDetails', params:{potholeId: pothole.potholeId}})"><td>{{ pothole.potholeId }}</td></router-link>
+                    
+                  
                     <button v-bind:key="pothole.potholeId" v-if = "pothole.hasChanges" v-on:click="saveChanges(pothole)">Save</button>
-                  </td>            
 
                   <template v-if="currentUser.username && currentUser.authorities[0].name === 'ROLE_ADMIN'">
                     

@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import ViewPotholes from '../views/ViewPotholes'
 import ReportPothole from '../views/ReportPothole'
+import viewPotholeDetails from '../components/PotholeDetails'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -70,8 +71,15 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
-  ]
+    },
+    {
+      path: "/viewPotholeDetails/:potholeId",
+      name:"viewPotholeDetails",
+      component: viewPotholeDetails,
+      meta: {
+        requiresAuth: false
+      }
+    }]
 })
 
 router.beforeEach((to, from, next) => {
