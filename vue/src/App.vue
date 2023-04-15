@@ -119,7 +119,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #9CADCE;
+  background-color: #B7BED8;
 }
 
 nav {
@@ -131,27 +131,28 @@ nav {
 
 main {
   grid-area: content;
-  background-color: #9CADCE;
+  background-color: #B7BED8;
 }
+
 
 aside {
   grid-area: side;
-  background-color: #4361ee;
+  background-color: #9CADCE;
 }
 
 footer {
   grid-area: footer;
-  background-color: #9CADCE;
+  background-color: #B7BED8;
 }
 
 header,
 footer {
-  color: #3a0ca3;
+  color: black;
 }
 nav,
 main,
 aside {
-  color: #3a0ca3;
+  color: black;
 }
 header,
 footer,

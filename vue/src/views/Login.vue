@@ -7,10 +7,12 @@
    -->
   <div class="container">
    <p> WELCOME TO ROUGH ROAD REPAIRS, AN APPLICATION FOR VIEW AND/OR REPORTING POTHOLES AND ALLOWING CITIES TO REPAIR AT THE EARLIEST.</p>
+  <img src="img/pothole5.jpg" alt="Logo" />
   </div>
+  
 
 
-   <!-- <img src="img/logo3.png" alt="Logo" /> -->
+   <!-- <img src="img/pothole5.jpg" alt="Logo" /> -->
     
     <form @submit.prevent="login">
       <h2 >Please Sign In</h2>
@@ -77,13 +79,13 @@ export default {
 .form-input-group {
   margin-bottom: 1rem;
   text-align: center;
+  bottom: -50px
 }
 label {
   margin-right: 0.5rem;
 }
 
 .container{ 
-  border: 4px solid gray;
   max-width: 1850px;
   margin: auto;
   padding: 1rem;
@@ -92,11 +94,16 @@ label {
   height: 10vh;
   display: flex;
   justify-content: center;
-  
-} 
+ }
+img{
+  height: 700px;
+  width: 700px;
+}
+
 form{
   border: 5px solid #5D576B;
   width: 300px;
+  
   
   
 
