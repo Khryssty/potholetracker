@@ -72,11 +72,12 @@ export default {
     }, 
     //Need to fix 
     deletePothole(id) {
-        potholeService.deletePothole(id).then()) => {
+        potholeService.deletePothole(id).then() => {
             this.getAllPotholes();
         }
     }    
     }
+    
 
 </script>
 
