@@ -76,6 +76,7 @@ export default {
 </script>
 
 <style scoped>
+
 .form-input-group {
   margin-bottom: 1rem;
   text-align: center;
@@ -87,6 +88,7 @@ label {
 }
 
 .container{ 
+  display: flex;
   max-width: 1850px;
   margin: auto;
   padding: 1rem;
@@ -105,7 +107,7 @@ img{
 form{
   border: 5px solid #5D576B;
   width: 300px;
-  
+  margin: 225px 250px 275px 300px 
   
   
 
