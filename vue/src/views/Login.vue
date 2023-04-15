@@ -94,5 +94,12 @@ label {
   justify-content: center;
   
 } 
+form{
+  border: 5px solid #5D576B;
+  width: 300px;
+  
+  
+
+}
 
 </style>

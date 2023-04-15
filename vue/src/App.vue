@@ -2,7 +2,10 @@
   <div class="container">
     <!-- Adding Icons: first add the icon to the specific icons import in main.js,
             then add the icon to the library in main.js, finally you can use the icon in your template -->
-    <header><img src="img/Logo4.png" alt="Logo" /></header>
+    <header>
+      <h1>Rough Road Repairs </h1>
+      <img src="img/Logo4.png" alt="Logo" />
+      </header>
     
 
     <nav>
@@ -116,19 +119,19 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #AFB1DB;
+  background-color: #9CADCE;
 }
 
 nav {
   grid-area: nav;
-  background-color: #AFB1DB;
+  background-color: #9CADCE;
 }
 
 
 
 main {
   grid-area: content;
-  background-color: #BCBBB7;
+  background-color: #9CADCE;
 }
 
 aside {
@@ -138,7 +141,7 @@ aside {
 
 footer {
   grid-area: footer;
-  background-color: #AFB1DB;
+  background-color: #9CADCE;
 }
 
 header,
