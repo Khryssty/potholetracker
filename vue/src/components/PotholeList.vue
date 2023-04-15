@@ -115,7 +115,10 @@ export default {
        potholeService.updatePothole(pothole).then((response) => {
          this.$store.commit("SET_POTHOLES", response.data);
        });
+       alert("Update to the pothole has been saved.")      
       pothole.hasChanges = false
+      //do a refresh page of pothole list       
+      window.location.reload();
     },
     showSaveButton(){
       
