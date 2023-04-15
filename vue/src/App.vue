@@ -4,10 +4,9 @@
             then add the icon to the library in main.js, finally you can use the icon in your template -->
     <header>
       <h1>Rough Road Repairs </h1>
-      <img src="img/Logo6.png" alt="Logo" />
-      </header>
+      <img src="img/Logo6.png" alt="Logo" />            
+    </header>
     
-
     <nav>
       <div id="sidebar-container" class="content">
         <h3>Navigation</h3>
@@ -24,14 +23,16 @@
             View Potholes</router-link
           >
         </div>
-        <div> 
+        <div v-if="currentUser.username"> 
           <!-- v-if statement
         if user logged in?  route to and then do a v-else? -->
           <router-link class="link" v-bind:to="{ name: 'reportPothole' }"
             >Report Pothole</router-link
           >
         </div>
-       
+       <div v-else>
+         <router-link :to="{name: 'register'}">Report a Pothole</router-link>
+       </div>
 
       </div>
     </nav>
@@ -60,7 +61,11 @@ import userInfo from '../src/components/UserInfo.vue';
 export default {
   components: {
     userInfo
-  }
+  },
+  computed: {    
+  currentUser() {      
+    return this.$store.state.user;
+  } }
 };
 </script>
 
