@@ -40,9 +40,12 @@ div.current-user {
 }
 p {
   margin: 0;
+  font-size: 25px;
 }
 .link {
   color: #3a0ca3;
+  font-size: 25px;
+
 }
 h4 {
   margin: 0.5rem;

@@ -79,7 +79,8 @@ export default {
 .form-input-group {
   margin-bottom: 1rem;
   text-align: center;
-  bottom: -50px
+  bottom: -50px;
+  
 }
 label {
   margin-right: 0.5rem;
@@ -94,6 +95,7 @@ label {
   height: 10vh;
   display: flex;
   justify-content: center;
+  font-family: "Helvetica", Tahoma, Geneva, Verdana, sans-serif;
  }
 img{
   height: 700px;

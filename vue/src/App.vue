@@ -4,7 +4,7 @@
             then add the icon to the library in main.js, finally you can use the icon in your template -->
     <header>
       <h1>Rough Road Repairs </h1>
-      <img src="img/Logo4.png" alt="Logo" />
+      <img src="img/Logo6.png" alt="Logo" />
       </header>
     
 
@@ -19,14 +19,20 @@
         </div>
         <div>
           <router-link class="link" v-bind:to="{ name: 'viewPotholes' }"
-            >View Potholes</router-link
+            > <font-awesome-icon icon="fa-solid fa-person-digging" />
+            
+            View Potholes</router-link
           >
         </div>
-        <div>
+        <div> 
+          <!-- v-if statement
+        if user logged in?  route to and then do a v-else? -->
           <router-link class="link" v-bind:to="{ name: 'reportPothole' }"
             >Report Pothole</router-link
           >
         </div>
+       
+
       </div>
     </nav>
 
@@ -120,6 +126,10 @@ header {
   justify-content: center;
   align-items: center;
   background-color: #B7BED8;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 50px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 nav {
@@ -164,16 +174,13 @@ aside {
   font-weight: bold;
   text-transform: uppercase;
 }
-
-header {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 30px;
-  text-transform: uppercase;
-  text-align: center;
+.header-container {
+  display: flex;
 }
+
 img{
-  height: 110px;
-  width: 150px;
+  height: 125px;
+  width: 160px;
 }
 
 div.content {
@@ -188,6 +195,8 @@ div#sidebar-container {
 }
 .link {
   color: #3a0ca3;
+  font-size: 30px;
+  text-decoration: underline;
 }
 h3 {
   margin: 0;
