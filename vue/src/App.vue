@@ -37,9 +37,10 @@
       </div>
     </nav>
 
+    <!-- Would be cool to add a map to the details page
+         Would be cool to make repaired potholes green on the map  -->
     <main>
         <router-view />
-        <!-- Maybe a map with TBD-->
     </main>
 
     <aside>
