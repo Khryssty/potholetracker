@@ -146,6 +146,7 @@ main {
   grid-area: content;
   background-color: #cfc5e8;
   display: flex;
+  justify-content: center;
 }
 
 

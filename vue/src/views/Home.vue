@@ -20,13 +20,12 @@ export default {
   div.home {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: #cfc5e8;
   }
   p {
+    text-align: center;
     width: 50%;
-    
   }
 </style>
 
