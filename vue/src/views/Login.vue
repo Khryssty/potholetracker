@@ -10,7 +10,7 @@
    <h2> WE ARE HERE TO FIX ANY POTHOLE. </h2>
   <img src="img/pothole5.jpg" alt="Logo" />
   -->
-  <img src="img/HomePage3.png" alt="Home Page" /> 
+  <img src="img/HomePage6.png" alt="Home Page" /> 
   </div>
   
 
@@ -92,17 +92,18 @@ label {
 
 .container{ 
   display: flex;
-  max-width: 1850px;
+  max-width: 1500px;
   margin: auto;
-  padding: 1rem;
+  padding: none;
   text-align: center;
   height: 10vh;
   justify-content: center;
   font-family: "Helvetica", Tahoma, Geneva, Verdana, sans-serif;
+
  }
 img{
-  height: 825px;
-  width: 1700px;
+  height: 700px;
+  width: 100%;
 
   
 }
@@ -110,7 +111,10 @@ img{
 form{
   border: 5px solid #5D576B;
   width: 300px;
-  margin: 225px 250px 275px 300px 
+  position: absolute;
+  top: 400px;
+  right: 345px;
+
   
   
 

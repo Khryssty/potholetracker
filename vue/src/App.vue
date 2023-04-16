@@ -4,12 +4,10 @@
             then add the icon to the library in main.js, finally you can use the icon in your template -->
     <header>
       <h1>Rough Road Repairs </h1>
-<<<<<<< HEAD
-      </header>
-=======
-      <img src="img/Logo6.png" alt="Logo" />            
+      <!--<img src="img/Logo6.png" alt="Logo" />  -->
+
+       
     </header>
->>>>>>> c21c6666903f3006cf1db754525cef73b5c83e92
     
     <nav>
       <div id="sidebar-container" class="content">
@@ -34,14 +32,9 @@
             >Report Pothole</router-link
           >
         </div>
-<<<<<<< HEAD
-        
-       
-=======
        <div v-else>
          <router-link :to="{name: 'register'}">Report a Pothole</router-link>
        </div>
->>>>>>> c21c6666903f3006cf1db754525cef73b5c83e92
 
       </div>
     </nav>
@@ -193,8 +186,8 @@ aside {
 }
 
 img{
-  height: 125px;
-  width: 160px;
+  height: 25px;
+  width: 50px;
 }
 
 div.content {
