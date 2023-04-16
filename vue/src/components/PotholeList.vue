@@ -1,6 +1,5 @@
 <template>
   <div class="pothole-list">
-    <div>
       <table class ="list-of-potholes">
         <thead>
           <tr>
@@ -76,7 +75,6 @@
           </template>          
         </tbody>
       </table>
-    </div>
   </div>
 </template>
 
@@ -135,7 +133,12 @@ export default {
 
 <style scoped>
 
+.pothole-list {
+  display: flex;
+}
+
 .list-of-potholes{
+    flex: 1;
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
