@@ -38,10 +38,8 @@
     </nav>
 
     <main>
-      <div class="content">
         <router-view />
         <!-- Maybe a map with TBD-->
-      </div>
     </main>
 
     <aside>
@@ -147,6 +145,8 @@ nav {
 main {
   grid-area: content;
   background-color: #cfc5e8;
+  display: flex;
+  justify-content: stretch;
 }
 
 

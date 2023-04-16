@@ -20,6 +20,7 @@ export default {
 </script>
 <style scoped>
 div.viewPotholes {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }

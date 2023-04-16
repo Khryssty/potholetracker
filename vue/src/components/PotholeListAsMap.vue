@@ -44,10 +44,14 @@ export default {
 
 <style>
 div.map-container {
+  flex: 1;
   display: flex;
   justify-content: center;
 }
 #map {
+  width:100%;
+  height: 100%;
+  align-self: stretch;
   flex: 1;
 }
 div.my-icon {
