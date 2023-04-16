@@ -4,7 +4,6 @@
             then add the icon to the library in main.js, finally you can use the icon in your template -->
     <header>
       <h1>Rough Road Repairs </h1>
-      <img src="img/Logo6.png" alt="Logo" />
       </header>
     
 
@@ -31,6 +30,7 @@
             >Report Pothole</router-link
           >
         </div>
+        
        
 
       </div>
@@ -125,7 +125,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #B7BED8;
+  background-color: #E1E5EE;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 50px;
   text-transform: uppercase;
@@ -134,25 +134,25 @@ header {
 
 nav {
   grid-area: nav;
-  background-color: #9CADCE;
+  background-color: #cfc5e8;
 }
 
 
 
 main {
   grid-area: content;
-  background-color: #B7BED8;
+  background-color: #cfc5e8;
 }
 
 
 aside {
   grid-area: side;
-  background-color: #9CADCE;
+  background-color: #cfc5e8;
 }
 
 footer {
   grid-area: footer;
-  background-color: #B7BED8;
+  background-color: #E1E5EE;
 }
 
 header,
@@ -194,7 +194,7 @@ div#sidebar-container {
   gap: 0.75rem;
 }
 .link {
-  color: #3a0ca3;
+  color: #2E3440;
   font-size: 30px;
   text-decoration: underline;
 }
@@ -204,4 +204,5 @@ h3 {
   border-radius: 0.25rem;
   border: 2px black solid;
 }
+
 </style>

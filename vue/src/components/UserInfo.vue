@@ -43,7 +43,7 @@ p {
   font-size: 25px;
 }
 .link {
-  color: #3a0ca3;
+  color: #2E3440;
   font-size: 25px;
 
 }

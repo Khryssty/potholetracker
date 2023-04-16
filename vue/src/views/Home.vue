@@ -29,9 +29,11 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #cfc5e8;
   }
   p {
     width: 50%;
+    
   }
 </style>
 

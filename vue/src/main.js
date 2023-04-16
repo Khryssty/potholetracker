@@ -11,10 +11,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faHouse, faPersonDigging, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faMapLocationDot, faPersonDigging, faUser } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faHouse, faUser, faPersonDigging)
+library.add(faHouse, faUser, faPersonDigging, faMapLocationDot)
 
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)

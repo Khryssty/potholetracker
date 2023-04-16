@@ -6,8 +6,11 @@
    
    -->
   <div class="container">
-   <p> WELCOME TO ROUGH ROAD REPAIRS, AN APPLICATION FOR VIEW AND/OR REPORTING POTHOLES AND ALLOWING CITIES TO REPAIR AT THE EARLIEST.</p>
+   <!--<p> WELCOME TO ROUGH ROAD REPAIRS, AN APPLICATION FOR VIEW AND/OR REPORTING POTHOLES AND ALLOWING CITIES TO REPAIR AT THE EARLIEST.</p>
+   <h2> WE ARE HERE TO FIX ANY POTHOLE. </h2>
   <img src="img/pothole5.jpg" alt="Logo" />
+  -->
+  <img src="img/HomePage3.png" alt="Home Page" /> 
   </div>
   
 
@@ -93,15 +96,15 @@ label {
   margin: auto;
   padding: 1rem;
   text-align: center;
-
   height: 10vh;
-  display: flex;
   justify-content: center;
   font-family: "Helvetica", Tahoma, Geneva, Verdana, sans-serif;
  }
 img{
-  height: 700px;
-  width: 700px;
+  height: 825px;
+  width: 1700px;
+
+  
 }
 
 form{
