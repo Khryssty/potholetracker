@@ -1,7 +1,7 @@
 <template>
   <div class="pothole-list">
     <div>
-      <table>
+      <table class ="list-of-potholes">
         <thead>
           <tr>
             <th>POTHOLE ID</th>
@@ -18,7 +18,7 @@
             <template  v-if="!(!currentUser.username || currentUser.authorities[0].name !== 'ROLE_ADMIN') ||
                   !(pothole.status === 'deleted' || pothole.status === 'repaired')">                  
               
-              <tr v-bind:key="pothole.potholeId">
+              <tr class="pothole-row" v-bind:key="pothole.potholeId">
 
                  <router-link :to = "({name: 'viewPotholeDetails', params:{potholeId: pothole.potholeId}})"><td>{{ pothole.potholeId }}</td></router-link>
                     
@@ -135,22 +135,44 @@ export default {
 
 <style scoped>
 
-table {
-  /* added */ border-collapse: collapse;
-               width: 100%; /* given */
-               border-color: grey; /* added */
+.list-of-potholes{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    text-transform: capitalize;
+    text-align: center;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-tr {
-  border: 5px solid #5D576B; /* added */
-  border-radius: 25px;
-  padding: 20px;
-  width: 200px;
-  height: 150px;
+.list-of-potholes thead {  
+    background-color: #3a0098a1;
+    color: lightgray;
+    text-align: center;
 }
-td {
-  border: 5px solid #5D576B; /* added */
-  
+
+.list-of-potholes th,
+.list-of-potholes td {
+  padding: 12px 15px;
 }
+
+.list-of-potholes tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.list-of-potholes tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.list-of-potholes tbody tr:last-of-type {
+    border-bottom: 2px solid #3a0098a1;
+}
+
+.list-of-potholes tbody tr.pothole-row {
+    font-weight: normal;
+    color: black;
+}
+
 </style>
 
