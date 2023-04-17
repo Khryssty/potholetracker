@@ -1,80 +1,127 @@
 <template>
   <div class="pothole-list">
-      <table class ="list-of-potholes">
-        <thead>
-          <tr>
-            <th>POTHOLE ID</th>
-            <th>STATUS</th>
-            <th>SEVERITY</th>
-            <th>LAST UPDATE</th>
-            <th>UPDATED BY</th>
-            <th>ADDRESS/LAT-LONG</th>            
-            <th>PHOTO</th>
-          </tr>
-        </thead>
-        <tbody>
-          <template v-for="pothole in $store.state.potholes">            
-            <template  v-if="!(!currentUser.username || currentUser.authorities[0].name !== 'ROLE_ADMIN') ||
-                  !(pothole.status === 'deleted' || pothole.status === 'repaired')">                  
-              
-              <tr class="pothole-row" v-bind:key="pothole.potholeId">
-
-                 <router-link :to = "({name: 'viewPotholeDetails', params:{potholeId: pothole.potholeId}})"><td>{{ pothole.potholeId }}</td></router-link>
-                    
-                  
-                    <button v-bind:key="pothole.potholeId" v-if = "pothole.hasChanges" v-on:click="saveChanges(pothole)">Save</button>
-
-                  <template v-if="currentUser.username && currentUser.authorities[0].name === 'ROLE_ADMIN'">
-                    
-                    <td>
-                      <select class="status" v-model="pothole.status" v-bind:key="pothole.status" @change="onStatusChange(pothole)">
-                        <option
-                          v-for="option in statusOptions"
-                          v-bind:key="option.value"
-                          v-bind:value="option.value"
-                          v-bind:selected="pothole.status === option.value"
-                        >
-                          {{ option.label }}
-                        </option>
-                      </select>              
-                    </td>                    
-                    
-                    <td>
-                      <select class="severity" v-model="pothole.severity" v-bind:key="pothole.severity" @change="onSeverityChange(pothole)">>
-                        <option 
-                          v-for="option in severityOptions"
-                          v-bind:key="option.value"
-                          v-bind:value="option.value"
-                          v-bind:select="pothole.severity === option.value">
-                          {{option.label}}
-                        </option>
-                      </select>            
-                    </td>                            
-                </template>   
-
-
-                <template v-else>
-                    <td>{{ pothole.status }}</td>
-                    <td>{{ pothole.severity }}</td>
-                </template>
-
-                <td>{{ pothole.statusDate }}</td>
-                <td>{{ pothole.username }}</td>
-
-                <td v-if="pothole.location.street == ''">
-                  {{ pothole.location.lat }}, {{ pothole.location.lng }}
+    <table class="list-of-potholes">
+      <thead>
+        <tr>
+          <th>POTHOLE ID</th>
+          <template
+            v-if="
+              currentUser.username &&
+              currentUser.authorities[0].name === 'ROLE_ADMIN'
+            "
+          >
+            <th>ACTION</th>
+          </template>
+          <th>STATUS</th>
+          <th>SEVERITY</th>
+          <th>LAST UPDATE</th>
+          <th>UPDATED BY</th>
+          <th>ADDRESS/LAT-LONG</th>
+          <th>PHOTO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <template v-for="pothole in $store.state.potholes">
+          <template
+            v-if="
+              !(
+                !currentUser.username ||
+                currentUser.authorities[0].name !== 'ROLE_ADMIN'
+              ) ||
+              !(pothole.status === 'deleted' || pothole.status === 'repaired')
+            "
+          >
+            <tr class="pothole-row" v-bind:key="pothole.potholeId">
+              <router-link
+                :to="{
+                  name: 'viewPotholeDetails',
+                  params: { potholeId: pothole.potholeId },
+                }"
+                ><td>{{ pothole.potholeId }}</td></router-link
+              >
+              <template
+                v-if="
+                  currentUser.username &&
+                  currentUser.authorities[0].name === 'ROLE_ADMIN'
+                "
+              >
+                <td>
+                  <button
+                    v-bind:key="pothole.potholeId"
+                    v-if="pothole.hasChanges"
+                    v-on:click="saveChanges(pothole)"
+                  >
+                    Save
+                  </button>
                 </td>
-                <td v-else>
-                  {{ pothole.location.street }}, {{ pothole.location.city }},
-                  {{ pothole.location.state }}, {{ pothole.location.postalCode }}
+              </template>
+
+              <template
+                v-if="
+                  currentUser.username &&
+                  currentUser.authorities[0].name === 'ROLE_ADMIN'
+                "
+              >
+                <td>
+                  <select
+                    class="status"
+                    v-model="pothole.status"
+                    v-bind:key="pothole.status"
+                    @change="onStatusChange(pothole)"
+                  >
+                    <option
+                      v-for="option in statusOptions"
+                      v-bind:key="option.value"
+                      v-bind:value="option.value"
+                      v-bind:selected="pothole.status === option.value"
+                    >
+                      {{ option.label }}
+                    </option>
+                  </select>
                 </td>
-                
-                <td>{{ pothole.photo }}</td>              
-              </tr>          
-            </template>
-          </template>          
-        </tbody>
-      </table>
+
+                <td>
+                  <select
+                    class="severity"
+                    v-model="pothole.severity"
+                    v-bind:key="pothole.severity"
+                    @change="onSeverityChange(pothole)"
+                  >
+                    >
+                    <option
+                      v-for="option in severityOptions"
+                      v-bind:key="option.value"
+                      v-bind:value="option.value"
+                      v-bind:select="pothole.severity === option.value"
+                    >
+                      {{ option.label }}
+                    </option>
+                  </select>
+                </td>
+              </template>
+
+              <template v-else>
+                <td>{{ pothole.status }}</td>
+                <td>{{ pothole.severity }}</td>
+              </template>
+
+              <td>{{ pothole.statusDate }}</td>
+              <td>{{ pothole.username }}</td>
+
+              <td v-if="pothole.location.street == ''">
+                {{ pothole.location.lat }}, {{ pothole.location.lng }}
+              </td>
+              <td v-else>
+                {{ pothole.location.street }}, {{ pothole.location.city }},
+                {{ pothole.location.state }}, {{ pothole.location.postalCode }}
+              </td>
+
+              <td>{{ pothole.photo }}</td>
+            </tr>
+          </template>
+        </template>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -83,13 +130,16 @@ import potholeService from "../services/PotholeService";
 
 export default {
   name: "pothole-list",
-  data(){
-  return {      
-    potholes: this.$store.potholes.map(pothole => ({ ...pothole, hasChanges: false}))
-  }
-  }, 
-  computed: {    
-    currentUser() {      
+  data() {
+    return {
+      potholes: this.$store.potholes.map((pothole) => ({
+        ...pothole,
+        hasChanges: false,
+      })),
+    };
+  },
+  computed: {
+    currentUser() {
       return this.$store.state.user;
     },
     statusOptions() {
@@ -105,25 +155,23 @@ export default {
         this.$store.commit("SET_POTHOLES", response.data);
       });
     },
-    onStatusChange(pothole){
-      pothole.hasChanges = true
+    onStatusChange(pothole) {
+      pothole.hasChanges = true;
     },
-    onSeverityChange(pothole){
-      pothole.hasChanges = true
+    onSeverityChange(pothole) {
+      pothole.hasChanges = true;
     },
-    saveChanges(pothole){
-       //execute the update
-       potholeService.updatePothole(pothole).then((response) => {
-         this.$store.commit("SET_POTHOLES", response.data);
-       });
-       alert("Update to the pothole has been saved.")      
-      pothole.hasChanges = false
-      //do a refresh page of pothole list       
+    saveChanges(pothole) {
+      //execute the update
+      potholeService.updatePothole(pothole).then((response) => {
+        this.$store.commit("SET_POTHOLES", response.data);
+      });
+      alert("Update to the pothole has been saved.");
+      pothole.hasChanges = false;
+      //do a refresh page of pothole list
       window.location.reload();
     },
-    showSaveButton(){
-      
-    }
+    showSaveButton() {},
   },
   created() {
     this.getAllPotholes();
@@ -132,27 +180,26 @@ export default {
 </script>
 
 <style scoped>
-
 .pothole-list {
   display: flex;
 }
 
-.list-of-potholes{
-    flex: 1;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    text-transform: capitalize;
-    text-align: center;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+.list-of-potholes {
+  flex: 1;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  text-transform: capitalize;
+  text-align: center;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-.list-of-potholes thead {  
-    background-color: #3a0098a1;
-    color: lightgray;
-    text-align: center;
+.list-of-potholes thead {
+  background-color: #3a0098a1;
+  color: lightgray;
+  text-align: center;
 }
 
 .list-of-potholes th,
@@ -161,21 +208,20 @@ export default {
 }
 
 .list-of-potholes tbody tr {
-    border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
 }
 
 .list-of-potholes tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+  background-color: #f3f3f3;
 }
 
 .list-of-potholes tbody tr:last-of-type {
-    border-bottom: 2px solid #3a0098a1;
+  border-bottom: 2px solid #3a0098a1;
 }
 
 .list-of-potholes tbody tr.pothole-row {
-    font-weight: normal;
-    color: black;
+  font-weight: normal;
+  color: black;
 }
-
 </style>
 
