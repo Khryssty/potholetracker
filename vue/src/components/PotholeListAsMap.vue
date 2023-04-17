@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="map-container">
     <div id="map"></div>
   </div>
 </template>
@@ -43,9 +43,18 @@ export default {
 </script>
 
 <style>
+div.map-container {
+  flex-grow: 1;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
 #map {
-  width: 600px;
-  height: 600px;
+  width:100%;
+  min-height: 40rem;
+  align-self: stretch;
+  flex-grow: 1;
+  flex-shrink: 0;
 }
 div.my-icon {
   width: 200px;

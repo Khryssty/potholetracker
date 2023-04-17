@@ -1,5 +1,5 @@
 <template>
-  <div class="container">    
+  <div class="details-container">    
      <div class="potholeId">POTHOLE ID : {{pothole.potholeId}}</div>   
      <div class="status">STATUS: {{pothole.status}}</div>
      <div class="severity">SEVERITY: {{pothole.severity}}</div>
@@ -9,7 +9,7 @@
          {{pothole.location.city}}, {{pothole.location.state}}, {{pothole.location.postalCode}}
      </div>     
     <div class="photo">
-        <img src ="img/cone.gif" alt="Stay Away from Potholes"/>
+        <img src ="../../public/img/cone.gif" alt="Stay Away from Potholes"/>
     </div>
   
   </div>  
@@ -32,20 +32,11 @@ export default {
 </script>
 
 <style scoped>
-/* .container{
-    display: grid;
-    grid-template-areas: 
-    "potholeId potholeId"
-    "status severity";
+.details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
-.potholeId{
-    grid-area: potholeId;
-}
-.status{
-    grid-area: status;
-}
-.severity{
-    grid-area: severity;
-} */
 
 </style>

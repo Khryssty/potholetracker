@@ -4,9 +4,7 @@
             then add the icon to the library in main.js, finally you can use the icon in your template -->
     <header>
       <h1>Rough Road Repairs </h1>
-      <!--<img src="img/Logo6.png" alt="Logo" />  -->
-
-       
+      <img src="img/Logo6.png" alt="Logo" />            
     </header>
     
     <nav>
@@ -39,11 +37,10 @@
       </div>
     </nav>
 
+    <!-- Would be cool to add a map to the details page
+         Would be cool to make repaired potholes green on the map  -->
     <main>
-      <div class="content">
         <router-view />
-        <!-- Maybe a map with TBD-->
-      </div>
     </main>
 
     <aside>
@@ -149,6 +146,8 @@ nav {
 main {
   grid-area: content;
   background-color: #cfc5e8;
+  display: flex;
+  justify-content: center;
 }
 
 

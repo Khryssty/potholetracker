@@ -1,10 +1,9 @@
 <template>
-  <div id="container">
-    <div>
+  <div id="report-container">
+      <h2>Report A Pothole:</h2>
       <p>Latitude: {{latitude}}</p>
       <p>Longitude: {{longitude}}</p>
       <button @click="createPothole">Create Pothole</button>
-    </div>
     <div id="map"></div>
   </div>
 </template>
@@ -93,9 +92,18 @@ export default {
 </script>
 
 <style>
+#report-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  justify-self: stretch;
+}
 #map {
-  width: 600px;
-  height: 600px;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  align-self: stretch;
 }
 div.my-icon {
   width: 200px;
