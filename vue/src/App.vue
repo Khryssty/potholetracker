@@ -33,7 +33,7 @@
           >
         </div>
        <div v-else>
-         <router-link :to="{name: 'register'}">Report a Pothole</router-link>
+         <router-link class="link" :to="{name: 'register'}">Report a Pothole</router-link>
        </div>
 
       </div>
