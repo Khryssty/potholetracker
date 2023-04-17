@@ -4,7 +4,9 @@
             then add the icon to the library in main.js, finally you can use the icon in your template -->
     <header>
       <h1>Rough Road Repairs </h1>
-      <img src="img/Logo6.png" alt="Logo" />            
+      <!--<img src="img/Logo6.png" alt="Logo" />  -->
+
+       
     </header>
     
     <nav>
@@ -37,10 +39,11 @@
       </div>
     </nav>
 
-    <!-- Would be cool to add a map to the details page
-         Would be cool to make repaired potholes green on the map  -->
     <main>
+      <div class="content">
         <router-view />
+        <!-- Maybe a map with TBD-->
+      </div>
     </main>
 
     <aside>
@@ -129,16 +132,17 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #E1E5EE;
+  background-color: #b1a1ed;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 50px;
+  font-size: 45px;
   text-transform: uppercase;
   text-align: center;
 }
 
 nav {
   grid-area: nav;
-  background-color: #cfc5e8;
+  background-color: #bac1c5;
+  font-size: 25px;
 }
 
 
@@ -146,19 +150,18 @@ nav {
 main {
   grid-area: content;
   background-color: #cfc5e8;
-  display: flex;
-  justify-content: center;
 }
 
 
 aside {
   grid-area: side;
-  background-color: #cfc5e8;
+  background-color: #bac1c5;
 }
 
 footer {
   grid-area: footer;
-  background-color: #E1E5EE;
+  background-color: #b1a1ed;
+  
 }
 
 header,
@@ -201,7 +204,7 @@ div#sidebar-container {
 }
 .link {
   color: #2E3440;
-  font-size: 30px;
+  font-size: 25px;
   text-decoration: underline;
 }
 h3 {

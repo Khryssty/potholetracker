@@ -5,12 +5,19 @@
     <p>
       Welcome to Rough Road Repairs, an application for reporting potholes and allowing city employees
       to review reported potholes and make updates as well as schedule repairs accordingly.
-    </p>   
+    </p>
+
+    <table-format/>
+
+    
+    
   </div>
 </template>
 
 <script>
+import TableFormat from '../components/TableFormat.vue';
 export default {
+  components: { TableFormat },
   name: "home"
 };
 </script>
@@ -20,12 +27,13 @@ export default {
   div.home {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     background-color: #cfc5e8;
   }
   p {
-    text-align: center;
     width: 50%;
+    
   }
 </style>
 
