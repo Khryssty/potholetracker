@@ -1,14 +1,24 @@
 <template>
   <div id="report-container">
       <h2>Report A Pothole:</h2>
-      <p>Latitude: {{latitude}}</p>
-      <p>Longitude: {{longitude}}</p>
+      <div class="no-location" v-if="latitude === ''">
+        <p>Click the location on the map that corresponds with the pothole</p>
+      </div>
+      <div class="location-selected" v-else>
+        <p>Latitude: {{latitude}}</p>
+        <p>Longitude: {{longitude}}</p>
+      </div>
+      <div class="picture-upload">
+        <p class="upload">Upload a picture of the pothole:</p>
+        <input id="photo-upload" type="file" ref="file" alt="Upload a Picture" @change="savePhoto">
+      </div>
       <button @click="createPothole">Create Pothole</button>
     <div id="map"></div>
   </div>
 </template>
 
 <script>
+import fileService from '../services/FileService';
 import potholeService from "../services/PotholeService";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -23,11 +33,31 @@ export default {
       }),
       latitude: '',
       longitude: '',
-      layer: ''
+      layer: '',
+      photoName: 'No Photo',
+      photoFile: ''
     };
   },
   // props: ["lat", "lng"],
   methods: {
+    sendPhoto() {
+      let formData = new FormData();
+      formData.append("file", this.photoFile)
+      fileService.savePhoto(formData)
+        .then((response) => {
+          if (response.status === 200) {
+              // alert("File sent to server");
+              //success
+          }
+        })
+        .catch((error) => {
+          this.handleErrorResponse(error, "adding");
+        });
+    },
+    savePhoto(event) {
+      this.photoFile = event.target.files[0];
+      this.photoName = event.target.files[0].name;
+    },
     setupLeafletMap() {
       const mapDiv = L.map("map").setView(this.center, 13);
       L.tileLayer(
@@ -56,13 +86,14 @@ export default {
           lat: this.latitude,
           lng: this.longitude
         },
-        photo: 'placeholder'
+        photo: this.photoName
       };
       potholeService
         .submitPothole(newPothole)
         .then((response) => {
           if (response.status === 201) {
-              this.$router.push({name: "viewPotholes"});
+            this.sendPhoto();
+            this.$router.push({name: "viewPotholes"});
           }
         })
         .catch((error) => {
@@ -92,6 +123,9 @@ export default {
 </script>
 
 <style>
+h2 {
+  margin-bottom: .5rem;
+}
 #report-container {
   display: flex;
   flex-direction: column;
@@ -105,13 +139,34 @@ export default {
   flex: 1;
   align-self: stretch;
 }
+div.picture-upload {
+  margin-top: .5rem;
+  border: 2px solid black;
+  border-radius: .5rem;
+}
 p{
+  font-size: 1.25rem;
   margin: .5rem;
+}
+p.upload {
+  font-size: 1rem;
 }
 div.my-icon {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   background-color: red;
+}
+::-webkit-file-upload-button {
+  font-size: .75rem;
+  margin-bottom: .75rem;
+  padding: .75rem 1.5rem;
+  border-radius: 1rem;
+}
+button {
+  font-size: 1.25rem;
+  margin: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
 }
 </style>
