@@ -105,6 +105,9 @@ export default {
   flex: 1;
   align-self: stretch;
 }
+p{
+  margin: .5rem;
+}
 div.my-icon {
   width: 200px;
   height: 200px;
