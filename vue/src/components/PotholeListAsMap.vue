@@ -31,10 +31,13 @@ export default {
             "pk.eyJ1IjoiYnJhZGxleWN0YXlsb3IiLCJhIjoiY2xnZHJqMThhMDBvaTNybzdlNWQxb2M5ayJ9.ortNBF7OocvnnTGZxr063A",
         }
       ).addTo(mapDiv);
+      this.drawPotholes(mapDiv);
+    },
+    drawPotholes(mapDiv) {
       this.$store.state.potholes.forEach((element) => {
         L.marker(element.location, {icon: this.icon}).addTo(mapDiv);
       });
-    },
+    }
   },
   mounted() {
     this.setupLeafletMap();
@@ -42,7 +45,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 div.map-container {
   flex-grow: 1;
   flex-shrink: 0;

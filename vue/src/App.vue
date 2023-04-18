@@ -9,34 +9,19 @@
        
     </header>
     
-    <nav>
-      <div id="sidebar-container" class="content">
+    <nav class="sidebar-container">
         <h3>Navigation</h3>
-        <div>
-          <router-link class="link" v-bind:to="{ name: 'home' }">
-            <font-awesome-icon icon="fa-solid fa-house" />
-            Home</router-link
-          >
-        </div>
-        <div>
-          <router-link class="link" v-bind:to="{ name: 'viewPotholes' }"
-            > <font-awesome-icon icon="fa-solid fa-person-digging" />
-            
-            View Potholes</router-link
-          >
-        </div>
-        <div v-if="currentUser.username"> 
-          <!-- v-if statement
-        if user logged in?  route to and then do a v-else? -->
-          <router-link class="link" v-bind:to="{ name: 'reportPothole' }"
-            >Report Pothole</router-link
-          >
-        </div>
-       <div v-else>
-         <router-link class="link" :to="{name: 'register'}">Report a Pothole</router-link>
-       </div>
-
-      </div>
+        <router-link class="link" v-bind:to="{ name: 'home' }">
+          <font-awesome-icon icon="fa-solid fa-house" />
+          Home
+        </router-link>
+        <router-link class="link" v-bind:to="{ name: 'viewPotholes' }">
+          <font-awesome-icon icon="fa-solid fa-person-digging" />
+          View Potholes
+        </router-link>
+        <router-link class="link" v-bind:to="{ name: 'reportPothole' }">
+          Report Pothole
+        </router-link>
     </nav>
 
     <main>
@@ -139,13 +124,16 @@ header {
   text-align: center;
 }
 
-nav {
+nav.sidebar-container {
   grid-area: nav;
   background-color: #bac1c5;
   font-size: 25px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.75rem;
 }
-
-
 
 main {
   grid-area: content;
@@ -196,18 +184,16 @@ div.content {
   text-align: center;
   /* padding-top: 20px; */
 }
-div#sidebar-container {
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
+
 .link {
   color: #2E3440;
   font-size: 25px;
+  text-align: center;
   text-decoration: underline;
 }
 h3 {
+  align-self: stretch;
+  text-align: center;
   margin: 0;
   padding: 1rem 0;
   border-radius: 0.25rem;
