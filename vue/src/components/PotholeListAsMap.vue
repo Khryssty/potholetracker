@@ -33,7 +33,6 @@ export default {
             "pk.eyJ1IjoiYnJhZGxleWN0YXlsb3IiLCJhIjoiY2xnZHJqMThhMDBvaTNybzdlNWQxb2M5ayJ9.ortNBF7OocvnnTGZxr063A",
         }
       ).addTo(this.mapDiv);
-      // this.mapDiv.on("hover", this.drawPotholes());
       this.drawPotholes();
     },
     drawPotholes() {
