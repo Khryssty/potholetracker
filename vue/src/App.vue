@@ -5,6 +5,7 @@
     <header>
       <img class ="logo" src="img/RRR7.png" alt="Logo" />
       <h1>Rough Road Repairs </h1>
+      <img class ="cone" src="img/cone.gif" alt="gif" />
       <!--<img src="img/Logo6.png" alt="Logo" />  -->
 
        
@@ -132,6 +133,15 @@ header {
   height: 150px;
   top: -10px;
   left: 10px;
+  position: absolute;
+
+}
+
+.cone {
+  width: 350px;
+  height: 130px;
+  top: -5px;
+  left: 1500px;
   position: absolute;
 
 }
