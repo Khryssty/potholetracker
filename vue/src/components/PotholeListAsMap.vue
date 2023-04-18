@@ -13,7 +13,7 @@ export default {
     return {
       center: [39.739071, -75.539787], // Lat/Long for Wilm, not a fan of hardcoding this but not sure of alternatives
       icon: L.divIcon({
-        className: "my-icon",
+        className: "my-icon"
       })
     };
   },
@@ -45,7 +45,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 div.map-container {
   flex-grow: 1;
   flex-shrink: 0;

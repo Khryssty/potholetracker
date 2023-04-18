@@ -182,6 +182,7 @@ img{
 
 div.content {
   text-align: center;
+  height: 100%;
   /* padding-top: 20px; */
 }
 

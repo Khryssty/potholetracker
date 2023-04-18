@@ -187,7 +187,7 @@ export default {
 .list-of-potholes {
   flex: 1;
   border-collapse: collapse;
-  margin: 25px 0;
+  margin: .5rem 0;
   font-size: 0.9em;
   font-family: sans-serif;
   text-transform: capitalize;

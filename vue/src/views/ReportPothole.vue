@@ -24,13 +24,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-/* div.report-container {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-self: stretch;
-} */
-</style>

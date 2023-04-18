@@ -12,8 +12,8 @@
         <p class="upload">Upload a picture of the pothole:</p>
         <input id="photo-upload" type="file" ref="file" alt="Upload a Picture" @change="savePhoto">
       </div>
-      <button @click="createPothole">Create Pothole</button>
-    <div id="map"></div>
+      <button class="create-pothole" @click="createPothole">Create Pothole</button>
+    <div id="select-map"></div>
   </div>
 </template>
 
@@ -59,7 +59,7 @@ export default {
       this.photoName = event.target.files[0].name;
     },
     setupLeafletMap() {
-      const mapDiv = L.map("map").setView(this.center, 13);
+      const mapDiv = L.map("select-map").setView(this.center, 13);
       L.tileLayer(
         "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
         {
@@ -122,20 +122,22 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 h2 {
   margin-bottom: .5rem;
 }
 #report-container {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
   justify-self: stretch;
 }
-#map {
+#select-map {
   width: 100%;
   height: 100%;
+  min-height: 40rem;
   flex: 1;
   align-self: stretch;
 }
@@ -151,22 +153,23 @@ p{
 p.upload {
   font-size: 1rem;
 }
-div.my-icon {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-color: red;
-}
+
 ::-webkit-file-upload-button {
   font-size: .75rem;
   margin-bottom: .75rem;
   padding: .75rem 1.5rem;
   border-radius: 1rem;
 }
-button {
+button.create-pothole {
   font-size: 1.25rem;
   margin: 1rem;
   padding: 1rem 2rem;
   border-radius: 1rem;
+}
+div.my-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: red;
 }
 </style>
