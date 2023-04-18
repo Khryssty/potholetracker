@@ -106,7 +106,7 @@ label {
 
  }
 img{
-  height: 740px;
+  height: 685px;
   width: 1000px;
 
   
@@ -123,7 +123,7 @@ form{
 
 }
 #pothole-winner-img{
-  height: 740px;
+  height: 685px;
   width: 800px;
   margin: 0;
 }
