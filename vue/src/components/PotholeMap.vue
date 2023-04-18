@@ -167,8 +167,6 @@ button.create-pothole {
   border-radius: 1rem;
 }
 div.my-icon {
-  width: 100px;
-  height: 100px;
   border-radius: 50%;
   background-color: red;
 }

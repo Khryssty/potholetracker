@@ -62,8 +62,6 @@ div.map-container {
   flex-shrink: 0;
 }
 div.my-icon {
-  width: 200px;
-  height: 200px;
   border-radius: 50%;
   background-color: red;
 }
