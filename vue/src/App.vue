@@ -26,12 +26,12 @@
                 
         <hr/>
         <router-link class="link" v-bind:to="{ name: 'viewPotholes' }">
-          <font-awesome-icon icon="fa-solid fa-person-digging" size="xl" flip />
+          <font-awesome-icon icon="fa-solid fa-person-digging" size="xl" />
           <div>View Potholes</div>
         </router-link>
         <hr/>        
         <router-link class="link" v-bind:to="{ name: 'reportPothole' }">          
-          <font-awesome-icon icon="fa-solid fa-flag" size="xl" beat-fade />
+          <font-awesome-icon icon="fa-solid fa-flag" size="xl" />
           <div>Report Pothole</div>
         </router-link>
     </nav>
@@ -129,7 +129,9 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: hsl(194, 77%, 59%);
+  /* background-color: lightgray; */
+  background-color: #b1a1ed;
+  /* background-color: hsl(194, 77%, 59%); */
   /* background-color: #b1a1ed; */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 45px;
@@ -159,7 +161,8 @@ header {
 
 nav.sidebar-container {
   grid-area: nav;
-  background-color: hsl(194, 77%, 59%);
+  /* background-color: hsl(194, 77%, 59%); */
+  background-color: lightgray;
   font-size: 25px;
   padding: 0;
   display: flex;
@@ -177,15 +180,15 @@ main {
 
 aside {
   grid-area: side;
-  background-color: hsl(194, 77%, 59%);
+  background-color: lightgray;
   font-size: 25px;
   text-transform: capitalize;
 }
 
 footer {
   grid-area: footer;
-  background-color: hsl(194, 77%, 59%);
-  /* background-color: #b1a1ed; */
+  /* background-color: hsl(194, 77%, 59%); */
+  background-color: #b1a1ed;
   
 }
 
