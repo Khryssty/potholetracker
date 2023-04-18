@@ -3,24 +3,36 @@
     <!-- Adding Icons: first add the icon to the specific icons import in main.js,
             then add the icon to the library in main.js, finally you can use the icon in your template -->
     <header>
+      <img class ="logo" src="img/RRR7.png" alt="Logo" />
       <h1>Rough Road Repairs </h1>
+      <img class ="cone" src="img/cone.gif" alt="gif" />
       <!--<img src="img/Logo6.png" alt="Logo" />  -->
 
        
     </header>
     
     <nav class="sidebar-container">
-        <h3>Navigation</h3>
+        <h3>
+          <font-awesome-icon icon="fa-solid fa-map-location" size="lg" style="color: #d13a15;"/>                    
+          Navigation</h3>
+        <hr/> 
+
+        
         <router-link class="link" v-bind:to="{ name: 'home' }">
-          <font-awesome-icon icon="fa-solid fa-house" />
-          Home
+          
+          <font-awesome-icon icon="fa-solid fa-house" size="xl" />
+          <div>Home</div>
         </router-link>
+                
+        <hr/>
         <router-link class="link" v-bind:to="{ name: 'viewPotholes' }">
-          <font-awesome-icon icon="fa-solid fa-person-digging" />
-          View Potholes
+          <font-awesome-icon icon="fa-solid fa-person-digging" size="xl" flip />
+          <div>View Potholes</div>
         </router-link>
-        <router-link class="link" v-bind:to="{ name: 'reportPothole' }">
-          Report Pothole
+        <hr/>
+        <router-link class="link" v-bind:to="{ name: 'reportPothole' }">          
+          <font-awesome-icon icon="fa-solid fa-flag" size="xl" beat-fade />
+          <div>Report Pothole</div>
         </router-link>
     </nav>
 
@@ -117,22 +129,44 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #b1a1ed;
+  background-color: hsl(194, 77%, 59%);
+  /* background-color: #b1a1ed; */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 45px;
   text-transform: uppercase;
   text-align: center;
+  position: relative;
+  
+
+  }
+.logo {
+  width: 150px;
+  height: 150px;
+  top: -10px;
+  left: 10px;
+  position: absolute;
+
+}
+
+.cone {
+  width: 350px;
+  height: 130px;
+  top: -5px;
+  left: 1500px;
+  position: absolute;
+
 }
 
 nav.sidebar-container {
   grid-area: nav;
-  background-color: #bac1c5;
+  background-color: hsl(194, 77%, 59%);
   font-size: 25px;
   padding: 0;
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 0.75rem;
+  text-transform: capitalize;
 }
 
 main {
@@ -143,12 +177,15 @@ main {
 
 aside {
   grid-area: side;
-  background-color: #bac1c5;
+  background-color: hsl(194, 77%, 59%);
+  font-size: 25px;
+  text-transform: capitalize;
 }
 
 footer {
   grid-area: footer;
-  background-color: #b1a1ed;
+  background-color: hsl(194, 77%, 59%);
+  /* background-color: #b1a1ed; */
   
 }
 
@@ -159,7 +196,7 @@ footer {
 nav,
 main,
 aside {
-  color: black;
+  color:;
 }
 header,
 footer,
@@ -192,13 +229,14 @@ div.content {
   text-align: center;
   text-decoration: underline;
 }
-h3 {
+h3 {  
   align-self: stretch;
   text-align: center;
   margin: 0;
   padding: 1rem 0;
   border-radius: 0.25rem;
-  border: 2px black solid;
+  border: 2px black solid;  
 }
+
 
 </style>
