@@ -63,8 +63,6 @@ export default {
       L.tileLayer(
         "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
         {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
           maxZoom: 32,
           id: "mapbox/streets-v11",
           accessToken:
@@ -135,6 +133,7 @@ h2 {
   justify-self: stretch;
 }
 #select-map {
+  cursor: pointer;
   width: 100%;
   height: 100%;
   min-height: 40rem;
@@ -155,20 +154,20 @@ p.upload {
 }
 
 ::-webkit-file-upload-button {
+  cursor: pointer;
   font-size: .75rem;
   margin-bottom: .75rem;
   padding: .75rem 1.5rem;
   border-radius: 1rem;
 }
 button.create-pothole {
+  cursor: pointer;
   font-size: 1.25rem;
   margin: 1rem;
   padding: 1rem 2rem;
   border-radius: 1rem;
 }
 div.my-icon {
-  width: 100px;
-  height: 100px;
   border-radius: 50%;
   background-color: red;
 }

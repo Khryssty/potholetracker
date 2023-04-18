@@ -24,8 +24,6 @@ export default {
       L.tileLayer(
         "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
         {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
           maxZoom: 32,
           id: "mapbox/streets-v11",
           accessToken:
@@ -36,10 +34,18 @@ export default {
     },
     drawPotholes() {
       this.$store.state.potholes.forEach((element) => {
-        const newMarker = L.marker(element.location, {icon: this.icon});
+        const newMarker = L.marker(element.location, {
+          icon: this.icon,
+          title: `ID: ${element.potholeId}\nSeverity: ${element.severity}\nStatus: ${element.status}\nLast Updated: ${element.statusDate}`,
+          opacity: .65
+        });
+        newMarker.bindPopup(`ID: ${element.potholeId}`);
         newMarker.addTo(this.mapDiv);
       });
     },
+    clickedMarker() {
+      alert("click");
+    }
   },
   mounted() {
     this.setupLeafletMap();
@@ -62,8 +68,6 @@ div.map-container {
   flex-shrink: 0;
 }
 div.my-icon {
-  width: 200px;
-  height: 200px;
   border-radius: 50%;
   background-color: red;
 }

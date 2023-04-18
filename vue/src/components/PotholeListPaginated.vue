@@ -224,6 +224,9 @@ h2.current-page {
   margin: 0.75rem 0;
   border-radius: 0.5rem;
 }
+button:hover {
+    cursor: pointer;
+}
 
 .pothole-list {
   display: flex;
