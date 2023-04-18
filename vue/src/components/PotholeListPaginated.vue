@@ -47,7 +47,7 @@
                 "
               >
                 <td>
-                  <button
+                  <button id="save"
                     v-bind:key="pothole.potholeId"
                     v-if="pothole.hasChanges"
                     v-on:click="saveChanges(pothole)"
@@ -219,7 +219,7 @@ h2.current-page {
   margin: 1rem;
 }
 
-button {
+.change-page button {
   padding: 0.5rem 1rem;
   margin: 0.75rem 0;
   border-radius: 0.5rem;
@@ -234,7 +234,7 @@ button {
   flex: 1;
   border-collapse: collapse;
   margin: 0;
-  font-size: 0.9em;
+  font-size: 1em;
   font-family: sans-serif;
   text-transform: capitalize;
   text-align: center;
@@ -268,6 +268,19 @@ button {
 .list-of-potholes tbody tr.pothole-row {
   font-weight: normal;
   color: black;
+}
+#save {
+  background-color: green;
+  color: white;
+  border-radius: 7px;
+  height: 30px;
+  width: 60px;  
+}
+select{
+  border-style: double;
+  border-radius: 7px;
+  height: 25px;
+  width: 110px;
 }
 </style>
 

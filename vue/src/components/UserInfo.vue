@@ -1,18 +1,34 @@
 <template>
   <div id="sidebar-container" class="content">
-    <h3>User Info</h3>
-    <h4>Current User:</h4>
-    <div class="current-user">
+    
+    
+    <h3>
+      User Information
+    </h3>
+    
+    <hr/>
+    <hr/>
+    
+    <!-- <h4>Current User:</h4> -->    
+    <font-awesome-icon icon="fa-solid fa-user" size="xl"/>  
+    <div class="current-user">    
+      
       <p v-if="$store.state.token === ''">
-        <font-awesome-icon icon="fa-solid fa-user" /> Guest
+        Guest
       </p>
-      <p v-else>
-        <font-awesome-icon icon="fa-solid fa-user" />
+      <p v-else>        
         {{ $store.state.user.username }}
-      </p>
+      </p>      
     </div>
+
+    <hr/>
+    <hr/>
+
     <div class="logged-out" v-if="$store.state.token === ''">
-      <router-link class="link" :to="{ name: 'login' }">Login</router-link>
+      <router-link class="link" :to="{ name: 'login' }">
+        <font-awesome-icon icon="fa-solid fa-right-to-bracket" size="xl"/>
+        <div>Login</div>
+        </router-link>
     </div>
     <div id="logout" v-else>
       <router-link
@@ -31,6 +47,9 @@ export default {
 </script>
 
 <style scoped>
+div.content{
+  text-transform: capitalize;
+}
 div#logout {
   justify-self: end;
 }
@@ -47,7 +66,16 @@ p {
   font-size: 25px;
 
 }
+h3{
+  font-size: 24.5px;
+}
+
 h4 {
   margin: 0.5rem;
 }
+
+hr {
+	border:none;
+}
+
 </style>
