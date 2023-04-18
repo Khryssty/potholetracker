@@ -29,7 +29,7 @@
           <font-awesome-icon icon="fa-solid fa-person-digging" size="xl" flip />
           <div>View Potholes</div>
         </router-link>
-        <hr/>
+        <hr/>        
         <router-link class="link" v-bind:to="{ name: 'reportPothole' }">          
           <font-awesome-icon icon="fa-solid fa-flag" size="xl" beat-fade />
           <div>Report Pothole</div>
