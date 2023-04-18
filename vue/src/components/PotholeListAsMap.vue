@@ -16,7 +16,6 @@ export default {
         className: "my-icon"
       }),
       mapDiv: '',
-      markers: []
     };
   },
   methods: {
@@ -38,7 +37,6 @@ export default {
     drawPotholes() {
       this.$store.state.potholes.forEach((element) => {
         const newMarker = L.marker(element.location, {icon: this.icon});
-        this.markers.push(newMarker);
         newMarker.addTo(this.mapDiv);
       });
     },

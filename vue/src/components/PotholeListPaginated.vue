@@ -4,14 +4,14 @@
       <thead>
         <tr>
           <th>POTHOLE ID</th>
-          <template
+          <th
             v-if="
               currentUser.username &&
               currentUser.authorities[0].name === 'ROLE_ADMIN'
             "
           >
-            <th>ACTION</th>
-          </template>
+            ACTION
+          </th>
           <th>STATUS</th>
           <th>SEVERITY</th>
           <th>LAST UPDATE</th>
@@ -37,8 +37,9 @@
                   name: 'viewPotholeDetails',
                   params: { potholeId: pothole.potholeId },
                 }"
-                ><td>{{ pothole.potholeId }}</td></router-link
               >
+                <td>{{ pothole.potholeId }}</td>
+              </router-link>
               <template
                 v-if="
                   currentUser.username &&
@@ -123,9 +124,9 @@
       </tbody>
     </table>
     <div class="change-page">
-        <button @click="prevPage">Prev</button>
-        <h2 class="current-page">{{currentPage}}</h2>
-        <button @click="nextPage">Next</button>
+      <button @click="prevPage">Prev</button>
+      <h2 class="current-page">{{ currentPage }}</h2>
+      <button @click="nextPage">Next</button>
     </div>
   </div>
 </template>
@@ -141,19 +142,19 @@ export default {
         ...pothole,
         hasChanges: false,
       })),
-      pageSize: 5,
-      currentPage: 1
+      pageSize: 6,
+      currentPage: 1,
     };
   },
   computed: {
     paginatedPotholes() {
-        return this.$store.state.potholes.filter((hole, index) => {
-            let start = (this.currentPage - 1) * this.pageSize;
-            let end = this.currentPage * this.pageSize;
-            if(index >= start && index < end) {
-                return true;
-            }
-        });
+      return this.$store.state.potholes.filter((hole, index) => {
+        let start = (this.currentPage - 1) * this.pageSize;
+        let end = this.currentPage * this.pageSize;
+        if (index >= start && index < end) {
+          return true;
+        }
+      });
     },
     currentUser() {
       return this.$store.state.user;
@@ -189,15 +190,18 @@ export default {
     },
     showSaveButton() {},
     nextPage() {
-        if((this.currentPage * this.pageSize) < this.$store.state.potholes.length) {
-            this.currentPage++;
-        }
+      if (
+        this.currentPage * this.pageSize <
+        this.$store.state.potholes.length
+      ) {
+        this.currentPage++;
+      }
     },
     prevPage() {
-        if(this.currentPage > 1) {
-            this.currentPage--;
-        }
-    }
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
   },
   created() {
     this.getAllPotholes();
@@ -207,18 +211,18 @@ export default {
 
 <style scoped>
 div.change-page {
-    margin-right: 1rem;
-    align-self: flex-end;
-    display: flex;
+  margin-right: 1rem;
+  align-self: flex-end;
+  display: flex;
 }
 h2.current-page {
-    margin: 1rem;
+  margin: 1rem;
 }
 
 button {
-    padding: .5rem 1rem;
-    margin: .75rem 0;
-    border-radius: .5rem;
+  padding: 0.5rem 1rem;
+  margin: 0.75rem 0;
+  border-radius: 0.5rem;
 }
 
 .pothole-list {
