@@ -11,6 +11,7 @@
   <img src="img/pothole5.jpg" alt="Logo" />
   -->
   <img src="img/mockhomepage3.png" alt="Home Page" /> 
+  <img src="img/POTHOLEWINNER1.gif" alt="gif" id="pothole-winner-img" />
   </div>
   
 
@@ -103,7 +104,7 @@ label {
  }
 img{
   height: 740px;
-  width: 1500px;
+  width: 1000px;
 
   
 }
@@ -113,10 +114,15 @@ form{
   width: 300px;
   position: absolute;
   top: 520px;
-  right: 325px;
+  right: 800px;
 
   
 
+}
+#pothole-winner-img{
+  height: 740px;
+  width: 800px;
+  margin: 0;
 }
 
 </style>
