@@ -3,6 +3,7 @@
     <!-- Adding Icons: first add the icon to the specific icons import in main.js,
             then add the icon to the library in main.js, finally you can use the icon in your template -->
     <header>
+      <img class ="logo" src="img/RRR7.png" alt="Logo" />
       <h1>Rough Road Repairs </h1>
       <!--<img src="img/Logo6.png" alt="Logo" />  -->
 
@@ -122,6 +123,17 @@ header {
   font-size: 45px;
   text-transform: uppercase;
   text-align: center;
+  position: relative;
+  
+
+  }
+.logo {
+  width: 150px;
+  height: 150px;
+  top: -10px;
+  left: 10px;
+  position: absolute;
+
 }
 
 nav.sidebar-container {
