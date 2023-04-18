@@ -1,5 +1,7 @@
 <template>
+  
   <div class="details-container">    
+     <div><router-link :to="{name: 'viewPotholes'}">Back to the List</router-link></div>        
      <div class="potholeId">POTHOLE ID : {{pothole.potholeId}}</div>   
      <div class="status">STATUS: {{pothole.status}}</div>
      <div class="severity">SEVERITY: {{pothole.severity}}</div>
@@ -51,12 +53,18 @@ export default {
 </script>
 
 <style scoped>
-.details-container {
+div {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+    align-items: flex-start;
+    align-content: space-around;
+    justify-content: space-around;
+    margin: 10px;
+    padding: 10px;
+    border: 2px paleturquoise;
 }
+
+
 .pothole-image {
     width: 20rem;
     height: 20rem;
