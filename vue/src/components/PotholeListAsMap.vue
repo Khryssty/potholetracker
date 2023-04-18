@@ -1,6 +1,6 @@
 <template>
   <div class="map-container">
-    <div id="map"></div>
+    <div id="map" @click="drawPotholes"></div>
   </div>
 </template>
 
@@ -14,12 +14,14 @@ export default {
       center: [39.739071, -75.539787], // Lat/Long for Wilm, not a fan of hardcoding this but not sure of alternatives
       icon: L.divIcon({
         className: "my-icon"
-      })
+      }),
+      mapDiv: '',
+      markers: []
     };
   },
   methods: {
     setupLeafletMap() {
-      const mapDiv = L.map("map").setView(this.center, 13);
+      this.mapDiv = L.map("map").setView(this.center, 13);
       L.tileLayer(
         "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
         {
@@ -30,14 +32,17 @@ export default {
           accessToken:
             "pk.eyJ1IjoiYnJhZGxleWN0YXlsb3IiLCJhIjoiY2xnZHJqMThhMDBvaTNybzdlNWQxb2M5ayJ9.ortNBF7OocvnnTGZxr063A",
         }
-      ).addTo(mapDiv);
-      this.drawPotholes(mapDiv);
+      ).addTo(this.mapDiv);
+      // this.mapDiv.on("hover", this.drawPotholes());
+      this.drawPotholes();
     },
-    drawPotholes(mapDiv) {
+    drawPotholes() {
       this.$store.state.potholes.forEach((element) => {
-        L.marker(element.location, {icon: this.icon}).addTo(mapDiv);
+        const newMarker = L.marker(element.location, {icon: this.icon});
+        this.markers.push(newMarker);
+        newMarker.addTo(this.mapDiv);
       });
-    }
+    },
   },
   mounted() {
     this.setupLeafletMap();
