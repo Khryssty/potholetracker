@@ -5,7 +5,6 @@
     <header>
       <img class ="logo" src="img/RRR7.png" alt="Logo" />
       <h1>Rough Road Repairs </h1>
-      <img class ="cone" src="img/cone.gif" alt="gif" />
       <!--<img src="img/Logo6.png" alt="Logo" />  -->
 
        

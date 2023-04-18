@@ -10,8 +10,11 @@
    <h2> WE ARE HERE TO FIX ANY POTHOLE. </h2>
   <img src="img/pothole5.jpg" alt="Logo" />
   -->
-  <img src="img/mockhomepage3.png" alt="Home Page" /> 
-  <img src="img/POTHOLEWINNER1.gif" alt="gif" id="pothole-winner-img" />
+  <!--<img src="img/mockhomepage3.png" alt="Home Page" /> 
+  <img src="img/POTHOLEWINNER1.gif" alt="gif" id="pothole-winner-img" /> -->
+
+   <img src="img/mockhomepg.png" alt="Home Page" /> 
+
   </div>
   
 
