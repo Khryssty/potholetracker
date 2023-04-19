@@ -1,11 +1,13 @@
 <template>
   <div class="home">
    <h2> Welcome to Rough Road Repairs!</h2>
-  <p>We're here to make it easy for you to report potholes in your community. 
-    By reporting potholes, you're helping us to keep our roads in good condition, prevent damage to vehicles, and ensure the safety of drivers. <span id = "bottom"> Thanks to your pothole spotting skills, we can now fill that road crater and give you a 'high five' for making our job a little smoother!</span></p>
+  <p>Thanks to your pothole spotting skills, we can now fill that road crater and give you a 'high five' for making our job a little smoother!</p>
     
+  
     
   </div>
+
+ 
   
 </template>
 
