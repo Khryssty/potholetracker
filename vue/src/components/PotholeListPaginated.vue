@@ -117,7 +117,10 @@
                 {{ pothole.location.state }}, {{ pothole.location.postalCode }}
               </td>
 
-              <td>{{ pothole.photo }}</td>
+              <td v-if="pothole.photo !== 'No Photo'">
+                  <img  class="pothole-picture" :src="pothole.photo" alt="Pothole Picture"/>
+                </td>
+                <td v-else>{{pothole.photo}}</td>
             </tr>
           </template>
         </template>
@@ -132,6 +135,7 @@
 </template>
 
 <script>
+import fileService from "../services/FileService";
 import potholeService from "../services/PotholeService";
 
 export default {
@@ -148,7 +152,16 @@ export default {
   },
   computed: {
     paginatedPotholes() {
-      return this.$store.state.potholes.filter((hole, index) => {
+        let allPotholes = this.$store.state.potholes;
+        allPotholes.forEach(element => {
+            fileService.getPhoto(element.photo)
+                .then(response => {
+                    if(response.status == 200) {
+                        element.photo = window.URL.createObjectURL(new Blob([response.data]));
+                    }
+                });
+        });
+      return allPotholes.filter((hole, index) => {
         let start = (this.currentPage - 1) * this.pageSize;
         let end = this.currentPage * this.pageSize;
         if (index >= start && index < end) {
@@ -167,6 +180,14 @@ export default {
     },
   },
   methods: {
+      downloadFile() {
+            fileService.getPhoto(this.pothole.photo)
+                .then(response => {
+                    if(response.status == 200) {
+                        this.potholeImage = window.URL.createObjectURL(new Blob([response.data]));
+                    }
+                });
+        },
     getAllPotholes() {
       potholeService.viewPotholes().then((response) => {
         this.$store.commit("SET_POTHOLES", response.data);
