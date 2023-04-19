@@ -10,7 +10,7 @@
    <h2> WE ARE HERE TO FIX ANY POTHOLE. </h2>
   <img src="img/pothole5.jpg" alt="Logo" />
   -->
-  <img src="img/mock3.png" alt="Home Page" /> 
+  <img src="img/mock4.png" alt="Home Page" /> 
   <img src="img/POTHOLEWINNER1.gif" alt="gif" id="pothole-winner-img" />
 
   
@@ -106,7 +106,7 @@ label {
 
  }
 img{
-  height: 742px;
+  height: 685px;
   width: 1000px;
 
   
@@ -123,7 +123,7 @@ form{
 
 }
 #pothole-winner-img{
-  height: 742px;
+  height: 685px;
   width: 825px;
   margin: 0;
 }
