@@ -1,11 +1,9 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>If you are seeing this, you are authenticated.</p>
-    <p>
-      Welcome to Rough Road Repairs, an application for reporting potholes and allowing city employees
-      to review reported potholes and make updates as well as schedule repairs accordingly.
-    </p>
+   <h2> Welcome to Rough Road Repairs!</h2>
+  <p>We're here to make it easy for you to report potholes in your community. 
+    By reporting potholes, you're helping us to keep our roads in good condition, prevent damage to vehicles, and ensure the safety of drivers. Thank you for taking the time to help us improve our roads and make our community a better place to live.</p>
+    
   </div>
 </template>
 
@@ -23,9 +21,13 @@ export default {
     justify-content: center;
     align-items: center;
     background-color: #cfc5e8;
+    color: purple;
   }
   p {
     width: 50%;
+    color: purple;
+    font-size: 25px;
+    
     
   }
 </style>

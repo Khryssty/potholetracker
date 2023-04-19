@@ -11,9 +11,9 @@
     </header>
     
     <nav class="sidebar-container">
-        <h3>
-          <font-awesome-icon icon="fa-solid fa-map-location" size="lg" style="color: #d13a15;"/>                    
-          Navigation</h3>
+        <h3><font-awesome-icon icon="fa-solid fa-map-location" size="lg"  style="color: #3a0098a1;"/>                    
+          
+          <div>Menu</div></h3>
         <hr/> 
 
         
@@ -47,7 +47,8 @@
     </aside>
 
     <footer>
-      <div class="content">Footer content</div>
+      <div class="content"></div>
+
     </footer>
   </div>
 </template>
@@ -89,7 +90,7 @@ body {
 
   grid-template-columns: 200px 1fr 200px;
   grid-template-rows: 125px 1fr 85px;
-  gap: 4px;
+  gap: 1px;
 
   height: 100vh;
 }
@@ -194,11 +195,7 @@ footer {
 header,
 footer {
   color: black;
-}
-nav,
-main,
-aside {
-  color:;
+
 }
 header,
 footer,

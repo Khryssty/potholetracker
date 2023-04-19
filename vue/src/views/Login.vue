@@ -6,11 +6,8 @@
    
    -->
   <div class="container">
-   <!--<p> WELCOME TO ROUGH ROAD REPAIRS, AN APPLICATION FOR VIEW AND/OR REPORTING POTHOLES AND ALLOWING CITIES TO REPAIR AT THE EARLIEST.</p>
-   <h2> WE ARE HERE TO FIX ANY POTHOLE. </h2>
-  <img src="img/pothole5.jpg" alt="Logo" />
-  -->
-  <img src="img/mock3.png" alt="Home Page" /> 
+  
+  <img src="img/mock4.png" alt="Home Page" /> 
   <img src="img/POTHOLEWINNER1.gif" alt="gif" id="pothole-winner-img" />
 
   
@@ -106,7 +103,7 @@ label {
 
  }
 img{
-  height: 742px;
+  height: 743px;
   width: 1000px;
 
   
@@ -123,7 +120,7 @@ form{
 
 }
 #pothole-winner-img{
-  height: 742px;
+  height: 743px;
   width: 825px;
   margin: 0;
 }
