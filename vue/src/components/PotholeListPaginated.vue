@@ -3,7 +3,7 @@
     <table class="list-of-potholes">
       <thead>
         <tr>
-          <th>POTHOLE ID</th>
+          <th class="clickable" @click="setSort('potholeId')">POTHOLE ID <font-awesome-icon icon="fa-solid fa-arrows-up-down" /></th>
           <th
             v-if="
               currentUser.username &&
@@ -12,9 +12,9 @@
           >
             ACTION
           </th>
-          <th>STATUS</th>
-          <th>SEVERITY</th>
-          <th>LAST UPDATE</th>
+          <th class="clickable" @click="setSort('status')">STATUS <font-awesome-icon icon="fa-solid fa-arrows-up-down" /></th>
+          <th class="clickable" @click="setSort('severity')">SEVERITY <font-awesome-icon icon="fa-solid fa-arrows-up-down" /></th>
+          <th class="clickable" @click="setSort('statusDate')">LAST UPDATE <font-awesome-icon icon="fa-solid fa-arrows-up-down" /></th>
           <th>UPDATED BY</th>
           <th>ADDRESS/LAT-LONG</th>
           <th>PHOTO</th>
@@ -146,6 +146,8 @@ export default {
         ...pothole,
         hasChanges: false,
       })),
+      sortBy: 'potholeId',
+      sortDirection: 'asc',
       pageSize: 6,
       currentPage: 1,
     };
@@ -160,6 +162,12 @@ export default {
                         element.photo = window.URL.createObjectURL(new Blob([response.data]));
                     }
                 });//uncaught errors
+        });
+        allPotholes.sort((first, second) => {
+            let mod = (this.sortDirection === 'asc') ? 1 : -1;
+            if(first[this.sortBy] < second[this.sortBy]) return -1 * mod;
+            if(first[this.sortBy] > second[this.sortBy]) return 1 * mod;
+            return 0;
         });
       return allPotholes.filter((hole, index) => {
         let start = (this.currentPage - 1) * this.pageSize;
@@ -180,6 +188,12 @@ export default {
     },
   },
   methods: {
+    setSort(newSort) {
+        if(newSort === this.sortBy) {
+            this.sortDirection = (this.sortDirection === 'asc' ? 'desc' : 'asc');
+        }
+        this.sortBy = newSort;
+    },
     getAllPotholes() {
       potholeService.viewPotholes().then((response) => {
         this.$store.commit("SET_POTHOLES", response.data);
@@ -241,7 +255,7 @@ h2.current-page {
   margin: 0.75rem 0;
   border-radius: 0.5rem;
 }
-button:hover {
+button:hover, .clickable {
     cursor: pointer;
 }
 
