@@ -68,6 +68,6 @@ div.map-container {
 }
 div.my-icon {
   border-radius: 50%;
-  background-color: #3a0098a1;
+  background-color: #3a0098;
 }
 </style>
