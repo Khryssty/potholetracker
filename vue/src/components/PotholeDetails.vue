@@ -1,5 +1,4 @@
-<template>
-  
+<template>  
   <div class="details-container">    
      <div><router-link :to="{name: 'viewPotholes'}">Back to the List</router-link></div>        
      <div class="potholeId">POTHOLE ID : {{pothole.potholeId}}</div>   
@@ -42,17 +41,20 @@ div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    align-content: space-around;
-    justify-content: space-around;
-    margin: 10px;
-    padding: 10px;
-    border: 2px paleturquoise;
+    /* align-content: space-around; */
+    /* justify-content: space-around; */
+    margin: 4px;
+    padding: 10px;    
 }
 
-
-.pothole-image {
+.pothole-image {    
     width: 20rem;
     height: 20rem;
 }
 
+.details-container{
+    background: linear-gradient(to left, #b1a1ed, rgb(112, 176, 219));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 </style>
