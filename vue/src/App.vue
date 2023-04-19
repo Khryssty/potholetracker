@@ -11,9 +11,9 @@
     </header>
     
     <nav class="sidebar-container">
-        <h3>
-          <font-awesome-icon icon="fa-solid fa-map-location" size="lg" style="color: #d13a15;"/>                    
-          Navigation</h3>
+        <h3><font-awesome-icon icon="fa-solid fa-map-location" size="lg"  style="color: #3a0098a1;"/>                    
+          
+          <div>Menu</div></h3>
         <hr/> 
 
         
