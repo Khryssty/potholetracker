@@ -21,7 +21,7 @@
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
       <button type="submit">Create Account</button>
-      <router-link :to="{ name: 'login' }">Login if you have an account</router-link>
+      <router-link :to="{ name: 'login' }"><span>Login if you have an account</span></router-link>
     </form>
 
     
@@ -100,7 +100,7 @@ export default {
   right: 11rem;
   /* top: 5rem; */
   margin: 20px 20px;
-  max-width: 300px;
+  max-width: 300px;  
   padding: 10px 10px;
   background-color:transparent;
 }
@@ -108,7 +108,7 @@ export default {
   input[type=text], input[type=password] {
   
   width: 80%;
-  padding: 10px;
+  padding: 7px;
   margin: 5px 0 10px 0;
   border: none;
   background: #f1f1f1;
@@ -119,9 +119,7 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
 
-form router-link {
-  color: #66cef7;
-}
+
 label
  {
   color: #b1a1ed;
@@ -138,7 +136,7 @@ button {
   font-size: 100%;
   color: white;
   margin: 5px;
-  padding: 10px;  
+  padding: 5px;  
   border: none;
   cursor: pointer;
   width: 88%;
@@ -153,6 +151,9 @@ h3 {
   margin: 1px;
   padding: 2px;
   border: none;
+  color: #66cef7;
+}
+span {
   color: #66cef7;
 }
 
