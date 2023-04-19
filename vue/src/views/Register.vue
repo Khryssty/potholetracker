@@ -4,7 +4,7 @@
 
 
     <form @submit.prevent="register" class="register-form">
-      <h3>Create Account</h3>      
+      <h3>Create An Account</h3>      
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -98,8 +98,8 @@ export default {
 .register-form {
   position: absolute;  
   right: 11rem;
-  /* top: 5rem; */
-  margin: 20px 20px;
+  top: 7rem;
+  margin: 20px 40px;
   max-width: 300px;  
   padding: 10px 10px;
   background-color:transparent;
@@ -154,7 +154,7 @@ h3 {
   color: #66cef7;
 }
 span {
-  color: #66cef7;
+  color: rgb(102, 206, 247)
 }
 
 /* Media queries for responsiveness */
