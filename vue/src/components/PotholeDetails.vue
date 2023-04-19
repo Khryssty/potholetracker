@@ -14,7 +14,6 @@
     <div class="photo">
         <img v-if="pothole.photo !== 'No Photo'" class="pothole-image" :src="pothole.photo" alt="Pothole Photo">
         <div v-else>{{pothole.photo}}</div>
-        <!-- <img src ="../../public/img/cone.gif" alt="Stay Away from Potholes"/> -->
     </div>
     
   </div>  

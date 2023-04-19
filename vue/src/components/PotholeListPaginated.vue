@@ -159,7 +159,7 @@ export default {
                     if(response.status == 200) {
                         element.photo = window.URL.createObjectURL(new Blob([response.data]));
                     }
-                });
+                });//uncaught errors
         });
       return allPotholes.filter((hole, index) => {
         let start = (this.currentPage - 1) * this.pageSize;
@@ -180,14 +180,6 @@ export default {
     },
   },
   methods: {
-      downloadFile() {
-            fileService.getPhoto(this.pothole.photo)
-                .then(response => {
-                    if(response.status == 200) {
-                        this.potholeImage = window.URL.createObjectURL(new Blob([response.data]));
-                    }
-                });
-        },
     getAllPotholes() {
       potholeService.viewPotholes().then((response) => {
         this.$store.commit("SET_POTHOLES", response.data);
@@ -231,6 +223,10 @@ export default {
 </script>
 
 <style scoped>
+.pothole-picture {
+    height: 3rem;
+    width: 6rem;
+}
 div.change-page {
   margin-right: 1rem;
   align-self: flex-end;
