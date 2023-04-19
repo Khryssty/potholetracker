@@ -37,7 +37,6 @@ export default {
         const newMarker = L.marker(element.location, {
           icon: this.icon,
           title: `ID: ${element.potholeId}\nSeverity: ${element.severity}\nStatus: ${element.status}\nLast Updated: ${element.statusDate}`,
-          opacity: .65
         });
         newMarker.bindPopup(`ID: ${element.potholeId}`);
         newMarker.addTo(this.mapDiv);
@@ -69,6 +68,6 @@ div.map-container {
 }
 div.my-icon {
   border-radius: 50%;
-  background-color: red;
+  background-color: #3a0098a1;
 }
 </style>
