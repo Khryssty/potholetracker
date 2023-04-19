@@ -1,6 +1,11 @@
 <template>
 
+
+
   <div id="register" class="text-center">
+      <img src="img/registerpage.png" alt="Register Page" /> 
+
+
     <form @submit.prevent="register">
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
@@ -92,8 +97,18 @@ label {
 }
 form{
   background-color: #B1ABED;
-  border-radius: 10px;
+  border-radius: 50px;
   padding: 30px;
+}
+img {
+  height: 700px;
+  width: 1250px;
+  margin-top: 75px;
+  margin-left: 525px;
+  padding: 10px;
+  border-radius:100px;
+  
+
 }
 
 </style>
