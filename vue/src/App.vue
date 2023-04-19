@@ -47,7 +47,8 @@
     </aside>
 
     <footer>
-      <div class="content">Footer content</div>
+      <div class="content"></div>
+
     </footer>
   </div>
 </template>
@@ -194,11 +195,7 @@ footer {
 header,
 footer {
   color: black;
-}
-nav,
-main,
-aside {
-  color:;
+
 }
 header,
 footer,
