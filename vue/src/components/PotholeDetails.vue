@@ -12,7 +12,8 @@
      </div>    
       
     <div class="photo">
-        <img class="pothole-image" :src="potholeImage" alt="Pothole Photo">
+        <img v-if="pothole.photo !== 'No Photo'" class="pothole-image" :src="pothole.photo" alt="Pothole Photo">
+        <div v-else>{{pothole.photo}}</div>
         <!-- <img src ="../../public/img/cone.gif" alt="Stay Away from Potholes"/> -->
     </div>
     
@@ -20,27 +21,12 @@
 </template>
 
 <script>
-import fileService from '../services/FileService.js'
+// import fileService from '../services/FileService.js'
 export default {
     name: "pothole-details",
-    data() {
-        return {
-            potholeImage: ''
-        }
-    },
     computed:{
         pothole(){
             return this.$store.getters.pothole;
-        }
-    },
-    methods: {
-        downloadFile() {
-            fileService.getPhoto(this.pothole.photo)
-                .then(response => {
-                    if(response.status == 200) {
-                        this.potholeImage = window.URL.createObjectURL(new Blob([response.data]));
-                    }
-                });
         }
     },
     created(){
