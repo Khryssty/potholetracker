@@ -2,6 +2,8 @@
   <div class="home">
    <h2> Welcome to Rough Road Repairs!</h2>
   <p>Thanks to your pothole spotting skills, we can now fill that road crater and give you a 'high five' for making our job a little smoother!</p>
+  <img src="img/repairedpotholes.png" alt="Logo" />
+  
     
   
     
@@ -40,6 +42,13 @@ export default {
     margin-top: 5px;
 
   }
+  
+img{
+  height: 650px;
+  width: 1500px;
+}
+
+
 #bottom{
  display: block;
  margin-top: 500px;
