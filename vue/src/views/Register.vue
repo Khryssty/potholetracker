@@ -3,7 +3,7 @@
 
 
   <div id="register" class="text-center">
-      <img src="img/registerpage.png" alt="Register Page" /> 
+      <img src="img/registerpage2.png" alt="Register Page" /> 
 
 
     <form @submit.prevent="register">
@@ -101,12 +101,12 @@ form{
   padding: 30px;
 }
 img {
-  height: 700px;
-  width: 1250px;
-  margin-top: 75px;
+  height: 650px;
+  width: 1100px;
+  margin-top: 50px;
   margin-left: 525px;
   padding: 10px;
-  border-radius:100px;
+
   
 
 }
