@@ -108,8 +108,8 @@ export default {
   input[type=text], input[type=password] {
   
   width: 80%;
-  padding: 7px;
-  margin: 5px 0 10px 0;
+  padding: 5px;
+  margin: 2px 0 7px 0;
   border: none;
   background: #f1f1f1;
 }
@@ -139,7 +139,7 @@ button {
   padding: 5px;  
   border: none;
   cursor: pointer;
-  width: 88%;
+  width: 84%;
   opacity: 5;
 }
 
