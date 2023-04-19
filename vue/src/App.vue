@@ -90,7 +90,7 @@ body {
 
   grid-template-columns: 200px 1fr 200px;
   grid-template-rows: 125px 1fr 85px;
-  gap: 4px;
+  gap: 1px;
 
   height: 100vh;
 }

@@ -4,7 +4,7 @@
     
     <h3>
       <font-awesome-icon icon="fa-solid fa-user-gear" size="xl"  style="color: #3a0098a1;"/>
-      <div>Information</div>
+      <div>User Info</div>
     </h3>
     
     <hr/>
@@ -68,7 +68,7 @@ p {
 
 }
 h3{
-  font-size: 24.5px;
+  font-size: 25px;
 }
 
 h4 {
