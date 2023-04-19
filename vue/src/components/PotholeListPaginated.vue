@@ -148,7 +148,7 @@ export default {
       })),
       sortBy: 'potholeId',
       sortDirection: 'asc',
-      pageSize: 6,
+      pageSize: 5,
       currentPage: 1,
     };
   },
@@ -161,7 +161,8 @@ export default {
                     if(response.status == 200) {
                         element.photo = window.URL.createObjectURL(new Blob([response.data]));
                     }
-                });//uncaught errors
+                })
+                .catch();
         });
         allPotholes.sort((first, second) => {
             let mod = (this.sortDirection === 'asc') ? 1 : -1;
