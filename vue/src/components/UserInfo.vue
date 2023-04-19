@@ -3,7 +3,8 @@
     
     
     <h3>
-      User Information
+      <font-awesome-icon icon="fa-solid fa-user-gear" size="xl"  style="color: #3a0098a1;"/>
+      <div>Information</div>
     </h3>
     
     <hr/>
