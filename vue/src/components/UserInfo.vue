@@ -1,6 +1,5 @@
 <template>
-  <div id="sidebar-container" class="content">
-    
+  <div id="sidebar-container" class="content">    
     
     <h3>
       <font-awesome-icon icon="fa-solid fa-user-gear" size="xl"  style="color: #3a0098a1;"/>

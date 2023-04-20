@@ -48,7 +48,7 @@
 
     <footer>
       <div class="content">
-        
+        @Team 2 - Pothole Tracker
       </div>
     </footer>
   </div>
@@ -206,7 +206,7 @@ h3 {
   margin: 0;
   padding: 1rem 0;
   border-radius: 0.25rem;
-  border: 2px black solid;  
+  border: 3.5px rgba(0, 0, 0, 0.89) solid;  
 }
 
 /*handle responsive behavior */
