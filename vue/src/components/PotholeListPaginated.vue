@@ -32,14 +32,14 @@
             "
           >
             <tr class="pothole-row" v-bind:key="pothole.potholeId">
-              <router-link
+              
+                <td class="pothole-id"><router-link
                 :to="{
                   name: 'viewPotholeDetails',
                   params: { potholeId: pothole.potholeId },
                 }"
-              >
-                <td>{{ pothole.potholeId }}</td>
-              </router-link>
+              >{{ pothole.potholeId }}</router-link></td>
+              
               <template
                 v-if="
                   currentUser.username &&
@@ -114,7 +114,7 @@
               </td>
               <td v-else>
                 {{ pothole.location.street }}, {{ pothole.location.city }},
-                {{ pothole.location.state }}, {{ pothole.location.postalCode }}
+                {{ pothole.location.state }} {{ pothole.location.postalCode }}
               </td>
 
               <td v-if="pothole.photo !== 'No Photo'">
@@ -211,7 +211,7 @@ export default {
       potholeService.updatePothole(pothole).then((response) => {
         this.$store.commit("SET_POTHOLES", response.data);
       });
-      alert("Update to the pothole has been saved.");
+      // alert("Update to the pothole has been saved.");
       pothole.hasChanges = false;
       //do a refresh page of pothole list
       window.location.reload();
@@ -238,6 +238,9 @@ export default {
 </script>
 
 <style scoped>
+td.pothole-id {
+  font-weight: bold;
+}
 .pothole-picture {
     height: 3rem;
     width: 6rem;
@@ -286,7 +289,9 @@ button:hover, .clickable {
 .list-of-potholes th,
 .list-of-potholes td {
   padding: 12px 15px;
+  font-size: 1.15rem;
 }
+
 
 .list-of-potholes tbody tr {
   border-bottom: 1px solid #dddddd;
@@ -313,9 +318,10 @@ button:hover, .clickable {
 }
 select{
   border-style: double;
+  font-size: 1.1rem;
   border-radius: 7px;
-  height: 25px;
-  width: 110px;
+  height: 2rem;
+  width: 7.5rem;
 }
 </style>
 

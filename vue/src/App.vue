@@ -3,7 +3,7 @@
     <!-- Adding Icons: first add the icon to the specific icons import in main.js,
             then add the icon to the library in main.js, finally you can use the icon in your template -->
     <header>
-      <img class ="logo" src="img/RRR7.png" alt="Logo" />
+      <img class ="logo" src="../public/img/RRR7.png" alt="Logo" />
       <h1>Rough Road Repairs </h1>
       <!--<img src="img/Logo6.png" alt="Logo" />  -->
 
@@ -47,8 +47,9 @@
     </aside>
 
     <footer>
-      <div class="content"></div>
-
+      <div class="content">
+        
+      </div>
     </footer>
   </div>
 </template>
