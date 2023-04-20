@@ -37,6 +37,9 @@ export default {
 <style scoped>
 .home {
   height: 100vh;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  overflow: hidden;
 }
 .animate-fading {
   animation: fade 5s;
@@ -51,18 +54,15 @@ export default {
 
 .slideshow-text {
   position: absolute;
-  top: 85%;
+  top: 16.5%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   text-align: center;
   width: 100%;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 3.5em;
-  color: rgb(57, 90, 8);
+  color: #2e3440;
   
-}
-
-
-  
+}  
 </style>
 
