@@ -24,12 +24,12 @@
         </router-link>
                 
         <hr/>
-        <router-link class="link" v-bind:to="{ name: 'viewPotholes' }">
+        <router-link title="View reported potholes in your area" class="link" v-bind:to="{ name: 'viewPotholes' }">
           <font-awesome-icon icon="fa-solid fa-person-digging" size="xl" />
           <div>View Potholes</div>
         </router-link>
         <hr/>        
-        <router-link class="link" v-bind:to="{ name: 'reportPothole' }">          
+        <router-link title="Sign up to report a pothole" class="link" v-bind:to="{ name: 'reportPothole' }">          
           <font-awesome-icon icon="fa-solid fa-flag" size="xl" />
           <div class="report-pothole">Report Pothole</div>
         </router-link>

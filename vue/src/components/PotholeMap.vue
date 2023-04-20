@@ -12,7 +12,7 @@
         <p class="upload">Upload a picture of the pothole:</p>
         <input id="photo-upload" type="file" ref="file" alt="Upload a Picture" @change="savePhoto">
       </div>
-      <button class="create-pothole" @click="createPothole">Create Pothole</button>
+      <button class="create-pothole" @click="createPothole">Report A Pothole</button>
     <div id="select-map"></div>
   </div>
 </template>

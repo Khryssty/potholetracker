@@ -25,7 +25,7 @@
     <hr/>
     <hr/>
 
-    <div class="logged-out" v-if="$store.state.token === ''">
+    <div title="Login to report a pothole" class="logged-out" v-if="$store.state.token === ''">
       <router-link class="link" :to="{ name: 'login' }">
         <font-awesome-icon icon="fa-solid fa-right-to-bracket" size="xl"/>
         <div>Login</div>
