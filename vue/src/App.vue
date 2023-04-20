@@ -47,8 +47,9 @@
     </aside>
 
     <footer>
-      <div class="content">
-        @Team 2 - Pothole Tracker
+      <div class="content">       
+        <font-awesome-icon icon="fa-solid fa-copyright"  size="xl"/>
+        Team 2 - Pothole Tracker
       </div>
     </footer>
   </div>
@@ -158,10 +159,13 @@ aside {
 }
 
 footer {
-  grid-area: footer;
-  /* background-color: hsl(194, 77%, 59%); */
+  grid-area: footer;  
   background-color: #b1a1ed;
-  
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  /* align-items: center; */
+  padding: 35px 20px; 
 }
 
 header,
