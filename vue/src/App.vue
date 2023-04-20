@@ -31,7 +31,7 @@
         <hr/>        
         <router-link class="link" v-bind:to="{ name: 'reportPothole' }">          
           <font-awesome-icon icon="fa-solid fa-flag" size="xl" />
-          <div>Report Pothole</div>
+          <div class="report-pothole">Report Pothole</div>
         </router-link>
     </nav>
 
@@ -93,35 +93,6 @@ body {
   gap: 1px;
 
   height: 100vh;
-}
-/*handle responsive behavior */
-@media (max-width: 768px) {
-  .container {
-    grid-template-areas:
-      "header"
-      "nav"
-      "content"
-      "side"
-      "footer";
-    grid-template-columns: 1fr;
-    grid-template-rows:
-      auto /*Header */
-      75px /*Nav*/
-      1fr /* content */
-      75px /* Sidebar */
-      auto; /* Footer */
-  }
-  header,
-  footer,
-  nav,
-  main,
-  aside {
-    padding: 5px 0;
-  }
-  nav,
-  aside {
-    margin: 0;
-  }
 }
 
 header {
@@ -237,5 +208,33 @@ h3 {
   border: 2px black solid;  
 }
 
-
+/*handle responsive behavior */
+@media (max-width: 768px) {
+  .container {
+    grid-template-areas:
+      "header"
+      "nav"
+      "content"
+      "side"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows:
+      auto /*Header */
+      75px /*Nav*/
+      1fr /* content */
+      75px /* Sidebar */
+      auto; /* Footer */
+  }
+  header,
+  footer,
+  nav,
+  main,
+  aside {
+    padding: 5px 0;
+  }
+  nav,
+  aside {
+    margin: 0;
+  }
+}
 </style>

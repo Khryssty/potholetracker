@@ -99,7 +99,7 @@ export default {
   position: absolute;  
   right: 11rem;
   top: 7rem;
-  margin: 20px 40px;
+  margin: 8px 40px;
   max-width: 300px;  
   padding: 10px 10px;
   background-color:transparent;
@@ -109,7 +109,7 @@ export default {
   
   width: 80%;
   padding: 5px;
-  margin: 2px 0 7px 0;
+  margin: 2px 0 5px 0;
   border: none;
   background: #f1f1f1;
 }
@@ -135,7 +135,7 @@ button {
   font-weight: 2;  
   font-size: 100%;
   color: white;
-  margin: 5px;
+  margin: 4px;
   padding: 5px;  
   border: none;
   cursor: pointer;
